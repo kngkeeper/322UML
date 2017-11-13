@@ -114,10 +114,10 @@ public class UMLType implements DocumentType {
     */
 
     private static String[][] actionPairs = {
-	{ "Edit/Copy", DefaultEditorKit.copyAction} ,
-	{ "Edit/Cut", DefaultEditorKit.cutAction},
+	//{ "Edit/Copy", DefaultEditorKit.copyAction} ,
+	//{ "Edit/Cut", DefaultEditorKit.cutAction},
 	// { "", DefaultEditorKit.cutAction}, // test error check
-	{ "Edit/Paste", DefaultEditorKit.pasteAction}
+	//{ "Edit/Paste", DefaultEditorKit.pasteAction}
     };
 
 
@@ -161,10 +161,10 @@ public class UMLType implements DocumentType {
 	if (menu==null) {
 	    menu = new MenuDescriptor();
 	    try {
-		menu.addElement(new MenuElement("Edit/Capitalize", new CapitalizeAction()));
-		menu.addElement(new MenuElement("Edit/Delete", new DeleteAction()));
-		menu.addElement(new MenuElement("Edit/Lower Case", new DownCaseAction()));
-		menu.addElement(new MenuElement("Edit/Upper Case", new UpCaseAction()));
+		//menu.addElement(new MenuElement("Edit/Capitalize", new CapitalizeAction()));
+		//menu.addElement(new MenuElement("Edit/Delete", new DeleteAction()));
+		//menu.addElement(new MenuElement("Edit/Lower Case", new DownCaseAction()));
+		//menu.addElement(new MenuElement("Edit/Upper Case", new UpCaseAction()));
 	    } catch (Exception e) {
 		Log.internalError("Menu element error "+e.getLocalizedMessage());
 	    }
@@ -190,6 +190,6 @@ public class UMLType implements DocumentType {
     /**
      * The expected extensions for files the application can edit.
      */
-    private static String[] extensions = { "txt", "html" };
+    private static String[] extensions = { "pu", "puml" };
 
 } // end class TextType
