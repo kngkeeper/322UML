@@ -22,6 +22,8 @@ import net.sourceforge.plantuml.SourceFileReader;
 import ca.queensu.cs.dal.edfmwk.doc.DocumentEvent;
 import ca.queensu.cs.dal.edfmwk.doc.DocumentException;
 import ca.queensu.cs.dal.edfmwk.doc.DocumentListener;
+import java.util.Scanner;
+import net.sourceforge.plantuml.SourceStringReader;
 
 /**
  * Implementation of a text document, which is (indirectly) defined in
@@ -48,10 +50,12 @@ public class UMLDocument
 	contents.addDocumentListener(this);
 	JFrame jta = new JFrame();
 	try {
-		File source = new File(contents.getContentsStream().toString());
-        SourceFileReader reader = new SourceFileReader(source);
-        List<GeneratedImage> list = reader.getGeneratedImages();
-        File png = list.get(0).getPngFile();
+		InputStream source = contents.getContentsStream();
+        Scanner s = new Scanner(source).useDelimiter("\\A");
+        String uml = s.hasNext() ? s.next() : "";
+        SourceStringReader reader = new SourceStringReader(uml);
+        File png = new File("out.png");
+        reader.outputImage(png);
         BufferedImage out = ImageIO.read(png);
 		jta.setIconImage((Image)out);
 		window = new JScrollPane(jta);
