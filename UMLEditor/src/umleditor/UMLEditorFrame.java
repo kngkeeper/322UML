@@ -93,7 +93,7 @@ public class UMLEditorFrame extends javax.swing.JFrame {
         FileDialog fc = new FileDialog(this, "Choose a file", FileDialog.LOAD);
         fc.setFile("*.pu");
         fc.setVisible(true);
-        filenameField.setText(fc.getFile());
+        filenameField.setText(fc.getDirectory()+fc.getFile());
     }//GEN-LAST:event_browseButtonActionPerformed
 
     private void loadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadButtonActionPerformed
