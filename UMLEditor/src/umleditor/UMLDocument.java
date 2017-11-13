@@ -22,8 +22,13 @@ import net.sourceforge.plantuml.SourceFileReader;
 import ca.queensu.cs.dal.edfmwk.doc.DocumentEvent;
 import ca.queensu.cs.dal.edfmwk.doc.DocumentException;
 import ca.queensu.cs.dal.edfmwk.doc.DocumentListener;
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
+import java.util.stream.Collectors;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import net.sourceforge.plantuml.SourceStringReader;
+import org.apache.commons.io.IOUtils;
 
 /**
  * Implementation of a text document, which is (indirectly) defined in
@@ -48,16 +53,16 @@ public class UMLDocument
 	super(type);
 	contents = new UMLContents();
 	contents.addDocumentListener(this);
-	JFrame jta = new JFrame();
+	JLabel jta = new JLabel();
 	try {
 		InputStream source = contents.getContentsStream();
-        Scanner s = new Scanner(source).useDelimiter("\\A");
-        String uml = s.hasNext() ? s.next() : "";
+        String uml = IOUtils.toString(source, StandardCharsets.UTF_8);
         SourceStringReader reader = new SourceStringReader(uml);
         File png = new File("out.png");
         reader.outputImage(png);
         BufferedImage out = ImageIO.read(png);
-		jta.setIconImage((Image)out);
+        ImageIcon ico = new ImageIcon(out);
+		jta.setIcon(ico);
 		window = new JScrollPane(jta);
 	} catch (DocumentException e) {
 		// TODO Auto-generated catch block
