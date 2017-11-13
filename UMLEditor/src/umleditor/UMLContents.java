@@ -2,11 +2,19 @@ package umleditor;
 
 // $Id: TextContents.java,v 1.0 2012/10/04 13:57:18 dalamb Exp $
 import TextEditor.*;
+
+import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.*;
+
+import javax.imageio.ImageIO;
+
 //import java.util.*;
 import ca.queensu.cs.dal.edfmwk.doc.DocumentException;
 import ca.queensu.cs.dal.edfmwk.doc.StringSequence;
 import ca.queensu.cs.dal.edfmwk.doc.StringSequenceInputStream;
+import net.sourceforge.plantuml.GeneratedImage;
+import net.sourceforge.plantuml.SourceFileReader;
 
 /**
  * Internal representation of a text document.
@@ -65,6 +73,7 @@ public class UMLContents
      */
     public void write(Writer out) // throws IOException
     {
+
 	//System.err.println("Writing...");
 	PrintWriter pr = new PrintWriter(out);
 	int docLength = getLength();

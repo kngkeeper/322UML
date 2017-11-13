@@ -3,13 +3,22 @@ package umleditor;
 // $Id: TextDocument.java,v 1.0 2012/10/04 13:57:18 dalamb Exp $
 import TextEditor.*;
 import java.awt.Container;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.*;
+import java.util.List;
+
 //import java.util.*;
 import javax.swing.JTextArea;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 // Import only those classes from edfmwk that are essential, for documentation purposes
 import ca.queensu.cs.dal.edfmwk.doc.AbstractDocument;
 import ca.queensu.cs.dal.edfmwk.doc.DocumentType;
+import net.sourceforge.plantuml.GeneratedImage;
+import net.sourceforge.plantuml.SourceFileReader;
 import ca.queensu.cs.dal.edfmwk.doc.DocumentEvent;
 import ca.queensu.cs.dal.edfmwk.doc.DocumentException;
 import ca.queensu.cs.dal.edfmwk.doc.DocumentListener;
@@ -37,9 +46,22 @@ public class UMLDocument
 	super(type);
 	contents = new UMLContents();
 	contents.addDocumentListener(this);
-	JTextArea jta = new JTextArea(numRows, numColumns);
-	jta.setDocument(contents);
-	window = new JScrollPane(jta);
+	JFrame jta = new JFrame();
+	try {
+		File source = new File(contents.getContentsStream().toString());
+        SourceFileReader reader = new SourceFileReader(source);
+        List<GeneratedImage> list = reader.getGeneratedImages();
+        File png = list.get(0).getPngFile();
+        BufferedImage out = ImageIO.read(png);
+		jta.setIconImage((Image)out);
+		window = new JScrollPane(jta);
+	} catch (DocumentException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
     } // end TextDocument
 
     // Text document change listeners: all invoke the framework's own document
