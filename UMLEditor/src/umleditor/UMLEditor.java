@@ -30,8 +30,8 @@ import ca.queensu.cs.dal.flex.i18n.Localizer;
 public class UMLEditor extends Application {
     private MenuDescriptor menu;
     /* package */ MainPanel mainPanel;
-    private static String title = "Simple Text File Editor";
-    private static String copyright = "2010 David Alex Lamb";
+    private static String title = "Simple UML Class Diagram Editor";
+    private static String copyright = "2017 Queen's";
     private static String aboutMsg = title + "\nCopyright " + copyright;
     private static String packageName = "ca.queensu.cs.dal.txt";
     private static String version = "0.1";
