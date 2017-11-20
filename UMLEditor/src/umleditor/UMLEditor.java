@@ -22,6 +22,8 @@ import ca.queensu.cs.dal.edfmwk.menu.MenuElement;
 import ca.queensu.cs.dal.edfmwk.Menus;
 import ca.queensu.cs.dal.flex.Register;
 import ca.queensu.cs.dal.flex.i18n.Localizer;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
 
 /**
  * A simple text editor using the document framework.
@@ -56,7 +58,7 @@ public class UMLEditor extends Application {
 			menu.addElement(new MenuElement("Help/Help", new HelpAction(helpURI), "Help contents"));
 			menu.addElement(new MenuElement("Help/About", new AboutAction(aboutMsg)));
 			menu.addElement(new MenuElement("Help/Credits", new CreditAction()));
-	    	menu.addElement(new MenuElement("Edit/Classes", new ClassAction()));
+                        menu.addElement(new MenuElement("Edit/Classes", new ClassAction()));
 			menu.addElement(new MenuElement("Edit/Association", new AssociationAction()));
 			menu.addElement(new MenuElement("Edit/Attributes and Methods", new OtherAction()));
 	    } catch (Exception e) {
@@ -72,6 +74,9 @@ public class UMLEditor extends Application {
     public UMLEditor() {
 		super(title);
 		mainPanel = new MainPanel();
+                //mainPanel.add(new JLabel());
+                EditPane editPane = new EditPane();
+                mainPanel.add(editPane);
 		DocumentType fac = new UMLType();
 		DocumentManager manager = getDocumentManager();
 		//System.err.println("Got to return from getDocumentManager");
