@@ -54,4 +54,8 @@ public class UMLDiagram {
     public UMLClass getUMLClassByName(String name) {
         return null;
     }
+    
+    public LinkedList<UMLClass> getClasses() {
+        return classlist;
+    }
 }
