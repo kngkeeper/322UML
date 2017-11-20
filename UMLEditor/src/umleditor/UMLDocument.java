@@ -44,6 +44,8 @@ public class UMLDocument
     private static int numRows = 20;
     private static int numColumns = 80;
     private UMLContents contents;
+    
+    JLabel jta;
 
     /**
      * Constructs a document representation.
@@ -53,24 +55,7 @@ public class UMLDocument
 	super(type);
 	contents = new UMLContents();
 	contents.addDocumentListener(this);
-	JLabel jta = new JLabel();
-	try {
-		InputStream source = contents.getContentsStream();
-        //String uml = IOUtils.toString(source, StandardCharsets.UTF_8);
-        SourceStringReader reader = new SourceStringReader("C:\\Users\\Sean\\Documents\\Queen's\\2017 - 2018 Fall\\CISC 322\\Group Project\\322UML\\UMLEditor\\test.pu");
-        File png = new File("out.png");
-        reader.outputImage(png);
-        BufferedImage out = ImageIO.read(png);
-        ImageIcon ico = new ImageIcon(out);
-		jta.setIcon(ico);
-		window = new JScrollPane(jta);
-	} catch (DocumentException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
+        jta = new JLabel();
     } // end TextDocument
 
     // Text document change listeners: all invoke the framework's own document
@@ -132,6 +117,24 @@ public class UMLDocument
 	throws IOException
     {
 	contents.open(in);
+        try {
+		InputStream source = contents.getContentsStream();
+                String uml = contents.safelyGetText(0, contents.getLength());
+        //String uml = IOUtils.toString(source, StandardCharsets.UTF_8);
+        SourceStringReader reader = new SourceStringReader(uml);
+        File png = new File("out.png");
+        reader.outputImage(png);
+        BufferedImage out = ImageIO.read(png);
+        ImageIcon ico = new ImageIcon(out);
+		jta.setIcon(ico);
+		window = new JScrollPane(jta);
+	} catch (DocumentException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 	setChanged(false);
     } // open
 
