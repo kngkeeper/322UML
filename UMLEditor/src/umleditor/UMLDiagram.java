@@ -13,7 +13,7 @@ import java.util.LinkedList;
  */
 public class UMLDiagram {
     
-    private final String[] arrows = {"->",".>","|>","<-","<.","<|"};
+    private final String[] arrows = {"-*","-o",".*",".o","|>","*-","o-","*.","o.","<|"};
     
     private LinkedList<UMLClass> classlist = new LinkedList();
     private LinkedList<UMLAssociation> rels = new LinkedList();
