@@ -56,8 +56,8 @@ public class UMLDocument
 	JLabel jta = new JLabel();
 	try {
 		InputStream source = contents.getContentsStream();
-        String uml = IOUtils.toString(source, StandardCharsets.UTF_8);
-        SourceStringReader reader = new SourceStringReader(uml);
+        //String uml = IOUtils.toString(source, StandardCharsets.UTF_8);
+        SourceStringReader reader = new SourceStringReader("C:\\Users\\Sean\\Documents\\Queen's\\2017 - 2018 Fall\\CISC 322\\Group Project\\322UML\\UMLEditor\\test.pu");
         File png = new File("out.png");
         reader.outputImage(png);
         BufferedImage out = ImageIO.read(png);
