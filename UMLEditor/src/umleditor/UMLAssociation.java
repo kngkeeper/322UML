@@ -43,6 +43,14 @@ public class UMLAssociation {
     }
     
     public boolean getPointingLeft() {
-        return pointingLeft;
+        return this.pointingLeft;
+    }
+    
+    public String getClassA() {
+        return this.classA;
+    }
+    
+    public String getClassB() {
+        return this.classB;
     }
 }
