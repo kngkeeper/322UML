@@ -118,7 +118,6 @@ public class UMLDocument
     {
 	contents.open(in);
         try {
-		InputStream source = contents.getContentsStream();
                 String uml = contents.safelyGetText(0, contents.getLength());
         //String uml = IOUtils.toString(source, StandardCharsets.UTF_8);
         SourceStringReader reader = new SourceStringReader(uml);
@@ -128,9 +127,6 @@ public class UMLDocument
         ImageIcon ico = new ImageIcon(out);
 		jta.setIcon(ico);
 		window = new JScrollPane(jta);
-	} catch (DocumentException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
