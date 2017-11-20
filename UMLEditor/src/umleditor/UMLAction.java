@@ -2,7 +2,11 @@ package umleditor;
 
 // $Id: TextAction.java,v 1.1 2012/10/24 17:06:40 dalamb Exp $
 import TextEditor.*;
+
+import java.awt.Container;
 import java.awt.event.ActionEvent;
+
+import javax.swing.JFrame;
 // import javax.swing.Action;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -12,7 +16,9 @@ import javax.swing.JTextArea;
 import ca.queensu.cs.dal.edfmwk.Application;
 import ca.queensu.cs.dal.edfmwk.act.DefaultAction;
 import ca.queensu.cs.dal.edfmwk.win.CommonWindow;
+import ca.queensu.cs.dal.edfmwk.win.WindowManager;
 import ca.queensu.cs.dal.flex.log.Log;
+import ca.queensu.cs.dal.txt.MainPanel;
 /**
  * Parent for {@link javax.swing.Action Actions} for implementing changes to
  * the current text selection. Subclasses need only implement the
@@ -22,11 +28,12 @@ import ca.queensu.cs.dal.flex.log.Log;
  * See the <a href="../doc-files/copyright.html">copyright notice</a> for details.
  */
 public abstract class UMLAction extends DefaultAction {
+	private String name;
     /**
      * Constructs a text manipulation action
      */
     private UMLAction() {
-	super("Text");
+	super("UML");
     } // end constructor TextAction
 
     /**
@@ -35,6 +42,7 @@ public abstract class UMLAction extends DefaultAction {
      */
     protected UMLAction(String name) {
 	super(name);
+	this.name = name;
     } // end constructor TextAction
     
     /**
@@ -56,9 +64,11 @@ public abstract class UMLAction extends DefaultAction {
     public void actionPerformed(ActionEvent ae) {
 	try {
 	    Application app = Application.getApplication();
-	    CommonWindow win = app.getActiveWindow();
+	    //JTextArea area = new JTextArea();
+	    //((WindowManager) app).createMainWindow("Editing", area);
+	    CommonWindow win = (CommonWindow) app.getWindowManager();
 	    JTextArea area = (JTextArea) ((JScrollPane) win.getContentPane()).getViewport().getView();
-	    // if (firstArea==null) setArea(area);
+	    //if (firstArea==null) setArea(area);
 	    UMLDocument doc = (UMLDocument) app.getActiveDocument();
 	    UMLContents con = (UMLContents) doc.getContents();
 	    int start = area.getSelectionStart();
