@@ -137,7 +137,7 @@ public class UMLUtilities {
         String ret = "";
         String[] lines = source.split("\\n");
         for(int i=0;i<lines.length;i++) {
-            if(lines[i].contains("class") && (lines[i].contains(className + " ") || lines[i].contains(className + "\n"))) {
+            if(lines[i].contains("class "+className)) {
                 if(lines[i].contains("{") && !(lines[i].contains("}"))) {
                     while(lines[i].charAt(0) != '}') {
                         ret = ret + lines[i] + "\n";
@@ -162,10 +162,71 @@ public class UMLUtilities {
     public static boolean classIsAbstract(String source, String className) {
         String[] lines = source.split("\\n");
         for(String line : lines) {
-            if(line.contains("abstract ") && (line.contains(className + " ") || line.contains(className + "\n"))) {
+            if(line.contains("abstract ") && line.contains(className)) {
                 return true;
             }
         }
         return false;
+    }
+    
+    /**
+     * Takes in the source string and a class and returns the fields of the class
+     * @param source PlantUML source string
+     * @param className name of class to extract from
+     * @return list of all fields in the class
+     */
+    public static ArrayList<String> classFields(String source, String className) {
+        ArrayList<String> ret = new ArrayList();
+        String classSource = getClassSource(source, className);
+        String[] lines = classSource.split("\\n");
+        for(String line : lines) {
+            if(!line.contains("class "+className) && !line.equals("}") && !line.contains("()")) {
+                ret.add(line);
+            }
+        }
+        return ret;
+    }
+    
+    /**
+     * Takes in the source string and a class and returns the methods of the class
+     * @param source PlantUML source string
+     * @param className name of class to extract from
+     * @return list of all methods in the class in source format
+     */
+    public static ArrayList<String> classMethods(String source, String className) {
+        ArrayList<String> ret = new ArrayList();
+        String classSource = getClassSource(source, className);
+        String[] lines = classSource.split("\\n");
+        for(String line : lines) {
+            if(!line.contains("class "+className) && !line.equals("}") && !line.contains("()")) {
+                ret.add(line);
+            }
+        }
+        return ret;
+    }
+    
+    /**
+     * Returns the name of a field from its source line
+     * @param fieldSource source line containing field
+     * @return name of field
+     */
+    public String getFieldName(String fieldSource) {
+        String ret = "";
+        String[] words = fieldSource.split(" ");
+        for(int i=0;i<words.length;i++) {
+            if(!words[i].contains("}")) {
+                return words[i];
+            }
+        }
+        return ret;
+    }
+    
+    /**
+     * Returns the name of a method from its source line
+     * @param methodSource source line containing method
+     * @return name of method
+     */
+    public String getMethodName(String methodSource) {
+        return getFieldName(methodSource);
     }
 }
