@@ -74,4 +74,40 @@ public class UMLUtilities {
     public static boolean isStatic(String item) {
         return item.contains("{static}");
     }
+    
+    public static String getClassName(String classSource) {
+        String ret = null;
+        String[] tmp = classSource.split(" ");
+        for(int i=0;i<tmp.length;i++) {
+            if (tmp[i].equals("class")) {
+                ret = tmp[i+1];
+                break;
+            }
+        }
+        return ret;
+    }
+    
+    /**
+     * Takes in a plantUML source string and outputs the names of all classes
+     * @param source PlantUML source string
+     * @return All classes listed in source file
+     */
+    public static ArrayList<String> classNames(String source) {
+        ArrayList<String> ret = new ArrayList();
+        String[] lines = source.split("\\n");
+        
+        for(int i=0;i<lines.length;i++) {
+            if(lines[i].contains("class")) {
+                String[] words = lines[i].split(" ");
+                for (int j=0;j<words.length;j++) {
+                    if (words[j].equals("class")) {
+                        ret.add(words[j+1]);
+                    }
+                }
+            }
+         }
+        return ret;
+    }
+    
+    
 }
