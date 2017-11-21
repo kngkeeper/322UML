@@ -6,7 +6,6 @@
 package umleditor;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 /**
  *
@@ -109,5 +108,64 @@ public class UMLUtilities {
         return ret;
     }
     
+    /**
+     * Takes in the source string and returns a list of relations in the source
+     * @param source PlantUML source string
+     * @return list of Strings containing the entire source lines of relations
+     */
+    public static ArrayList<String> relationNames(String source) {
+        final String[] arrows = {"-*","-o",".*",".o","|>","*-","o-","*.","o.","<|"};
+        ArrayList<String> ret = new ArrayList();
+        String[] lines = source.split("\\n");
+        for(int i=0;i<lines.length;i++) {
+            for(String arrow : arrows) {
+                if (lines[i].contains(arrow)) {
+                    ret.add(lines[i]);
+                }
+            }
+        }
+        return ret;
+    }
     
+    /**
+     * Returns the PlantUML source of a named class
+     * @param source PlantUML source string
+     * @param className name of class to extract
+     * @return source of class with className
+     */
+    public static String getClassSource(String source, String className) {
+        String ret = "";
+        String[] lines = source.split("\\n");
+        for(int i=0;i<lines.length;i++) {
+            if(lines[i].contains("class") && (lines[i].contains(className + " ") || lines[i].contains(className + "\n"))) {
+                if(lines[i].contains("{") && !(lines[i].contains("}"))) {
+                    while(lines[i].charAt(0) != '}') {
+                        ret = ret + lines[i] + "\n";
+                        i++;
+                    }
+                    return ret;
+                }
+                else {
+                    return lines[i];
+                }
+            }
+        }
+        return ret;
+    }
+    
+    /**
+     * Takes in plantUML source and a class name and checks if it is abstract
+     * @param source full plantUML source string
+     * @param className name of class to check abstractness of
+     * @return 
+     */
+    public static boolean classIsAbstract(String source, String className) {
+        String[] lines = source.split("\\n");
+        for(String line : lines) {
+            if(line.contains("abstract ") && (line.contains(className + " ") || line.contains(className + "\n"))) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
