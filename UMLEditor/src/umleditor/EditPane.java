@@ -88,13 +88,12 @@ public class EditPane extends javax.swing.JPanel {
         tabbedPanel.setToolTipText("");
         tabbedPanel.setName(""); // NOI18N
 
+        classesSelectedClassCB.setMaximumRowCount(99999);
         classesSelectedClassCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         classesSelectedClassLB.setText("Selected Class");
 
         classNameLB.setText("Class Name");
-
-        classNameTF.setText("jTextField1");
 
         classTypeLB.setText("Class Type");
 
@@ -176,6 +175,7 @@ public class EditPane extends javax.swing.JPanel {
 
         selectedClassALB.setText("Selected Class A");
 
+        selectedClassACB.setMaximumRowCount(99999);
         selectedClassACB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         selectedClassACB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,6 +185,7 @@ public class EditPane extends javax.swing.JPanel {
 
         selectedClassBLB.setText("Selected Class B");
 
+        selectedClassBCB.setMaximumRowCount(999999);
         selectedClassBCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel6.setText("Association");
@@ -193,9 +194,11 @@ public class EditPane extends javax.swing.JPanel {
 
         associactionDirectionLB.setText("Direction");
 
+        buttonGroup1.add(aToBRB);
         aToBRB.setSelected(true);
         aToBRB.setText("AtoB");
 
+        buttonGroup1.add(bToARB);
         bToARB.setText("BtoA");
         bToARB.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -234,7 +237,7 @@ public class EditPane extends javax.swing.JPanel {
                     .addGroup(multiplicitiesPanelLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(aSideMultiplicitiesLB)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addGap(24, 24, 24)
                 .addGroup(multiplicitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, multiplicitiesPanelLayout.createSequentialGroup()
                         .addComponent(bSideMultiplicitiesTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -243,9 +246,9 @@ public class EditPane extends javax.swing.JPanel {
                         .addComponent(bSideMultiplicitiesLB)
                         .addGap(23, 23, 23))))
             .addGroup(multiplicitiesPanelLayout.createSequentialGroup()
-                .addGap(55, 55, 55)
+                .addGap(50, 50, 50)
                 .addComponent(multiplicitiesLB)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         multiplicitiesPanelLayout.setVerticalGroup(
             multiplicitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -357,10 +360,12 @@ public class EditPane extends javax.swing.JPanel {
 
         mnfSelectedClassLB.setText("Selected Class");
 
+        mnfSelectedClassCB.setMaximumRowCount(99999);
         mnfSelectedClassCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         selectedAttributeLB.setText("Selected Attribute");
 
+        selectedAttributeCB.setMaximumRowCount(99999);
         selectedAttributeCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         selectedAttributeCB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -370,15 +375,37 @@ public class EditPane extends javax.swing.JPanel {
 
         attributeNameLB.setText("Attribute Name");
 
-        attributeNameTF.setText("jTextField3");
-
+        buttonGroup2.add(methodsRB);
         methodsRB.setSelected(true);
         methodsRB.setText("Methods");
+        methodsRB.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                methodsRBItemStateChanged(evt);
+            }
+        });
+        methodsRB.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                methodsRBStateChanged(evt);
+            }
+        });
+        methodsRB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                methodsRBActionPerformed(evt);
+                methodsRBActionPerformed1(evt);
+            }
+        });
 
+        buttonGroup2.add(fieldsRB);
         fieldsRB.setText("Fields");
+        fieldsRB.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                fieldsRBStateChanged(evt);
+            }
+        });
         fieldsRB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fieldsRBActionPerformed(evt);
+                fieldsRBActionPerformed1(evt);
             }
         });
 
@@ -588,6 +615,30 @@ public class EditPane extends javax.swing.JPanel {
     private void aSideMultiplicitiesTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aSideMultiplicitiesTFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_aSideMultiplicitiesTFActionPerformed
+
+    private void methodsRBStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_methodsRBStateChanged
+        fieldsRB.setSelected(false);
+    }//GEN-LAST:event_methodsRBStateChanged
+
+    private void fieldsRBStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_fieldsRBStateChanged
+        methodsRB.setSelected(false);
+    }//GEN-LAST:event_fieldsRBStateChanged
+
+    private void methodsRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_methodsRBActionPerformed
+        fieldsRB.setSelected(false);
+    }//GEN-LAST:event_methodsRBActionPerformed
+
+    private void methodsRBActionPerformed1(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_methodsRBActionPerformed1
+        fieldsRB.setSelected(false);
+    }//GEN-LAST:event_methodsRBActionPerformed1
+
+    private void fieldsRBActionPerformed1(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldsRBActionPerformed1
+        methodsRB.setSelected(false);
+    }//GEN-LAST:event_fieldsRBActionPerformed1
+
+    private void methodsRBItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_methodsRBItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_methodsRBItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
