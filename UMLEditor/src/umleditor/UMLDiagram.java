@@ -5,7 +5,7 @@
  */
 package umleditor;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,8 +15,8 @@ public class UMLDiagram {
     
     private final String[] arrows = {"-*","-o",".*",".o","|>","*-","o-","*.","o.","<|"};
     
-    private LinkedList<UMLClass> classlist = new LinkedList();
-    private LinkedList<UMLAssociation> rels = new LinkedList();
+    private ArrayList<UMLClass> classlist = new ArrayList();
+    private ArrayList<UMLAssociation> rels = new ArrayList();
     
     public UMLDiagram(String source) {
         String[] lines = source.split("\\n");
@@ -55,7 +55,7 @@ public class UMLDiagram {
         return null;
     }
     
-    public LinkedList<UMLClass> getClasses() {
+    public ArrayList<UMLClass> getClasses() {
         return classlist;
     }
 }

@@ -5,7 +5,7 @@
  */
 package umleditor;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,8 +15,8 @@ public class UMLClass {
     
     private String name;
     private boolean isAbstract;
-    private LinkedList<String> fields = new LinkedList();
-    private LinkedList<String> methods = new LinkedList();
+    private ArrayList<String> fields = new ArrayList();
+    private ArrayList<String> methods = new ArrayList();
     
     public UMLClass(String source) {
         String[] tmp = source.split(" ");
@@ -49,11 +49,11 @@ public class UMLClass {
         return isAbstract;
     }
     
-    public LinkedList<String> getFields() {
+    public ArrayList<String> getFields() {
         return fields;
     }
     
-    public LinkedList<String> getMethods() {
+    public ArrayList<String> getMethods() {
         return methods;
     }
 }
