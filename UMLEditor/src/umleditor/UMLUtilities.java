@@ -5,6 +5,7 @@
  */
 package umleditor;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 /**
@@ -19,7 +20,7 @@ public class UMLUtilities {
      * @return class internal representation
      */
     public static UMLClass indentifyClass(String name, UMLDiagram diagram) {
-        LinkedList<UMLClass> list = diagram.getClasses();
+        ArrayList<UMLClass> list = diagram.getClasses();
         for(UMLClass item : list) {
             if (item.getName().equals(name)) {
                 return item;
@@ -48,16 +49,21 @@ public class UMLUtilities {
         }
     }
     
+    public static void changeVisibility(String fieldName, UMLClass classof, byte level) {
+            for (String item : classof.getFields()) {
+                if (item.equals(fieldName)) {
+                    
+                }
+            }
+    }
+    
     /**
      * Checks if a line's item is an abstract field/method
      * @param item plantUML line containing item
      * @return true if abstract
      */
     public static boolean isAbstract(String item) {
-        if (item.contains("{abstract}")) {
-            return true;
-        }
-        return false;
+        return item.contains("{abstract}");
     }
     
     /**
@@ -66,9 +72,6 @@ public class UMLUtilities {
      * @return true if static
      */
     public static boolean isStatic(String item) {
-        if (item.contains("{static}")) {
-            return true;
-        }
-        return false;
+        return item.contains("{static}");
     }
 }
