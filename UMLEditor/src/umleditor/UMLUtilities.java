@@ -13,21 +13,6 @@ import java.util.Arrays;
  * @author huctw
  */
 public class UMLUtilities {
-    /**
-     * Locates a UML class in a diagram object based on its name
-     * @param name name of class
-     * @param diagram Diagram to locate from
-     * @return class internal representation
-     */
-    public static UMLClass indentifyClass(String name, UMLDiagram diagram) {
-        ArrayList<UMLClass> list = diagram.getClasses();
-        for(UMLClass item : list) {
-            if (item.getName().equals(name)) {
-                return item;
-            }
-        }
-        return null;
-    }
     
     /**
      * Identifies the visibility of an object in a class
@@ -43,15 +28,7 @@ public class UMLUtilities {
         }
         return ' ';
     }
-    
-    public static void changeVisibility(String fieldName, UMLClass classof, byte level) {
-            for (String item : classof.getFields()) {
-                if (item.equals(fieldName)) {
-                    
-                }
-            }
-    }
-    
+        
     /**
      * Checks if a line's item is an abstract field/method
      * @param item plantUML line containing item
