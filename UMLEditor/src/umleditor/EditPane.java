@@ -5,6 +5,8 @@
  */
 package umleditor;
 
+import javax.swing.DefaultComboBoxModel;
+
 /**
  *
  * @author Sean
@@ -89,7 +91,12 @@ public class EditPane extends javax.swing.JPanel {
         tabbedPanel.setName(""); // NOI18N
 
         classesSelectedClassCB.setMaximumRowCount(99999);
-        classesSelectedClassCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        classesSelectedClassCB.setModel(new DefaultComboBoxModel(UMLUtilities.classNames(sourceTextArea.getText()).toArray()));
+        classesSelectedClassCB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                classesSelectedClassCBActionPerformed(evt);
+            }
+        });
 
         classesSelectedClassLB.setText("Selected Class");
 
@@ -255,9 +262,9 @@ public class EditPane extends javax.swing.JPanel {
             .addGroup(multiplicitiesPanelLayout.createSequentialGroup()
                 .addComponent(multiplicitiesLB)
                 .addGap(21, 21, 21)
-                .addGroup(multiplicitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bSideMultiplicitiesLB)
-                    .addComponent(aSideMultiplicitiesLB))
+                .addGroup(multiplicitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(aSideMultiplicitiesLB, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(bSideMultiplicitiesLB))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(multiplicitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bSideMultiplicitiesTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -639,6 +646,10 @@ public class EditPane extends javax.swing.JPanel {
     private void methodsRBItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_methodsRBItemStateChanged
         // TODO add your handling code here:
     }//GEN-LAST:event_methodsRBItemStateChanged
+
+    private void classesSelectedClassCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classesSelectedClassCBActionPerformed
+        classNameTF.setText((String)classesSelectedClassCB.getSelectedItem());
+    }//GEN-LAST:event_classesSelectedClassCBActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
