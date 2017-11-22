@@ -303,4 +303,61 @@ public class UMLUtilities {
         }
         return ret;
     }
+    
+    /**
+     * Creates a new field in specified class
+     * @param source plantUML source string
+     * @param className name of class to add field to
+     * @param fieldName name of field to add
+     * @param visibility visibility of field as specified by plantUML language
+     * @param isStatic true if field is static
+     * @param isAbstract true if field is abstract
+     * @return plantUML source string with field added
+     */
+    public static String createField(String source, String className, String fieldName, char visibility, boolean isStatic, boolean isAbstract) {
+        ArrayList<String> lines = new ArrayList(Arrays.asList(source.split("\\n")));
+        for(int i=0;i<lines.size();i++) {
+            if(lines.get(i).contains("class "+className+" {")) {
+                if(isAbstract)
+                    lines.add(i+1,"{abstract} "+visibility+fieldName);
+                else if(isStatic)
+                    lines.add(i+1,"{static} "+visibility+fieldName);
+                else
+                    lines.add(i+1,visibility+fieldName);
+                break;
+            }
+            else {
+                 String tmp = lines.get(i) + " {";
+                 lines.remove(i);
+                 lines.add(i, tmp);
+                 if(isAbstract)
+                    lines.add(i+1,"{abstract} "+visibility+fieldName);
+                else if(isStatic)
+                    lines.add(i+1,"{static} "+visibility+fieldName);
+                else
+                    lines.add(i+1,visibility+fieldName);
+                lines.add(i+2, "}");
+                break;
+            }
+        }
+        String ret = "";
+        for(String line : lines) {
+            ret = ret + line + "\n";
+        }
+        return ret;
+    }
+    
+    /**
+     * Creates a new method in specified class
+     * @param source plantUML source string
+     * @param className name of class to add field to
+     * @param methodName name of method to add
+     * @param visibility visibility of field as specified by plantUML language
+     * @param isStatic true if field is static
+     * @param isAbstract true if field is abstract
+     * @return plantUML source string with field added
+     */
+    public static String createMethod(String source, String className, String methodName, char visibility, boolean isStatic, boolean isAbstract) {
+        return createField(source,className,methodName,visibility,isStatic,isAbstract);
+    }
 }
