@@ -6,6 +6,7 @@
 package umleditor;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.text.Document;
 
 /**
  *
@@ -651,6 +652,9 @@ public class EditPane extends javax.swing.JPanel {
         classNameTF.setText((String)classesSelectedClassCB.getSelectedItem());
     }//GEN-LAST:event_classesSelectedClassCBActionPerformed
 
+    public void setFieldDocument(Document doc) {
+        sourceTextArea.setDocument(doc);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel aSideMultiplicitiesLB;
