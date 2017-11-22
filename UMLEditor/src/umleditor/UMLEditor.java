@@ -124,7 +124,6 @@ public class UMLEditor extends Application {
             CommonWindow win = (CommonWindow) app.getActiveWindow();
             UMLDocument doc = (UMLDocument) app.getActiveDocument();
             UMLContents contents = (UMLContents) doc.getContents();
-            JTextArea area = (JTextArea) ((JScrollPane) win.getContentPane()).getViewport().getView();
             String uml = contents.safelyGetText(0, contents.getLength());
             //String uml = IOUtils.toString(source, StandardCharsets.UTF_8);
             SourceStringReader reader = new SourceStringReader(uml);
