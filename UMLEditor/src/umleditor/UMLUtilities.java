@@ -512,4 +512,29 @@ public class UMLUtilities {
         }
         return "";
     }
+    
+    /**
+     * Removes an association from the source string
+     * @param source plantUML source string
+     * @param classA first class in association
+     * @param classB second class in association
+     * @return plantUML string without association
+     */
+    public static String removeAss(String source, String classA, String classB) {
+        ArrayList<String> lines = new ArrayList(Arrays.asList(source.split("\\n")));
+        for(int i=0;i<lines.size();i++) {
+            for(String arrow : ARROWS) {
+                if(lines.get(i).contains(arrow)) {
+                    if(lines.get(i).contains(classA) && lines.get(i).contains(classB)) {
+                        lines.remove(i);
+                    }
+                }
+            }
+        }
+        String ret = "";
+        for(String line : lines) {
+            ret = ret + line + "\n";
+        }
+        return ret;
+    }
 }
