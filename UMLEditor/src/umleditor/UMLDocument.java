@@ -119,7 +119,6 @@ public class UMLDocument
 	contents.open(in);
         try {
                 String uml = contents.safelyGetText(0, contents.getLength());
-        //String uml = IOUtils.toString(source, StandardCharsets.UTF_8);
         SourceStringReader reader = new SourceStringReader(uml);
         File png = new File("out.png");
         reader.outputImage(png);
@@ -134,7 +133,6 @@ public class UMLDocument
                 jp.add(ep);
                 window = jp;
 	} catch (IOException e) {
-		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
 	setChanged(false);
