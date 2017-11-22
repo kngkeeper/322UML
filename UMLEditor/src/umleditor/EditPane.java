@@ -5,6 +5,8 @@
  */
 package umleditor;
 
+import javax.swing.text.Document;
+
 /**
  *
  * @author Sean
@@ -255,9 +257,9 @@ public class EditPane extends javax.swing.JPanel {
             .addGroup(multiplicitiesPanelLayout.createSequentialGroup()
                 .addComponent(multiplicitiesLB)
                 .addGap(21, 21, 21)
-                .addGroup(multiplicitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bSideMultiplicitiesLB)
-                    .addComponent(aSideMultiplicitiesLB))
+                .addGroup(multiplicitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(aSideMultiplicitiesLB, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(bSideMultiplicitiesLB))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(multiplicitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bSideMultiplicitiesTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -640,6 +642,9 @@ public class EditPane extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_methodsRBItemStateChanged
 
+    public void setFieldDocument(Document doc) {
+        sourceTextArea.setDocument(doc);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel aSideMultiplicitiesLB;
