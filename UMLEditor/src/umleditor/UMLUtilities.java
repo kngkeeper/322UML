@@ -14,7 +14,7 @@ import java.util.Arrays;
  */
 public class UMLUtilities {
     
-    private static final String[] ARROWS = {"-*","-o",".*",".o","|>","*-","o-","*.","o.","<|","--",".."};
+    private static final String[] ARROWS = {"--*","--o","..*","..o","--|>","*--","o--","*..","o..","<|--","--",".."};
     private static final char[] ARROW_SYMBOLS = {'*','o','|'};
     
     /**
@@ -530,6 +530,34 @@ public class UMLUtilities {
                     }
                 }
             }
+        }
+        String ret = "";
+        for(String line : lines) {
+            ret = ret + line + "\n";
+        }
+        return ret;
+    }
+    
+    /**
+     * Adds a new association to the diagram
+     * @param source plantUML source string
+     * @param classA first class in association
+     * @param classB second class in association
+     * @param assType '*' if composition, '|' if extension, 'o' if aggregation, '-' if normal
+     * @param aToB true if arrow points from class A to class B
+     * @param label label text for arrow
+     * @return plantUML string with association added
+     */
+    public static String createAss(String source, String classA, String classB, char assType, boolean aToB, String label) {
+        ArrayList<String> lines = new ArrayList(Arrays.asList(source.split("\\n")));
+        if(assType == '-') {
+            lines.add(1, classA + " -- " + classB + " : " + label);
+        }
+        else if(aToB) {
+            lines.add(1, classA + " --" + assType + " " + classB + " : " + label);
+        }
+        else {
+            lines.add(1, classA + " " + assType + "-- " + classB + " : " + label);
         }
         String ret = "";
         for(String line : lines) {
