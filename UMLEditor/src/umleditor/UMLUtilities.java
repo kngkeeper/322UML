@@ -480,7 +480,7 @@ public class UMLUtilities {
      * @param classB second class in association
      * @return '*' if composition, '|' if extension, 'o' if aggregation, '-' if normal
      */
-    public char getAssType(String source, String classA, String classB) {
+    public static char getAssType(String source, String classA, String classB) {
         ArrayList<String> assList = relationNames(source);
         for(String ass : assList) {
             if(ass.contains(classA) && ass.contains(classB)) {
@@ -491,5 +491,18 @@ public class UMLUtilities {
             }
         }
         return '-';
+    }
+    
+    public static String getAssLabel(String source, String classA, String classB) {
+        ArrayList<String> assList = relationNames(source);
+        for(String ass : assList) {
+            if(ass.contains(classA) && ass.contains(classB)) {
+                if(ass.contains(":")) {
+                    String[] tmp = ass.split(" ");
+                    return tmp[tmp.length-1];
+                }
+            }
+        }
+        return "";
     }
 }
