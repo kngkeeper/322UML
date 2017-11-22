@@ -609,7 +609,11 @@ public class EditPane extends javax.swing.JPanel {
     }//GEN-LAST:event_mnfApplyBTActionPerformed
 
     private void mnfDeleteBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnfDeleteBTActionPerformed
-        // TODO add your handling code here:
+    	if (methodsRB.getAutoscrolls())
+    		sourceTextArea.setText(UMLUtilities.deleteMethod(sourceTextArea.getText(), (String)mnfSelectedClassCB.getSelectedItem(), attributeNameTF.getText()));
+    	else
+    		sourceTextArea.setText(UMLUtilities.deleteField(sourceTextArea.getText(), (String)mnfSelectedClassCB.getSelectedItem(), attributeNameTF.getText()));
+    	UMLEditor.updateGUI();
     }//GEN-LAST:event_mnfDeleteBTActionPerformed
 
     private void sourceApplyBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sourceApplyBTActionPerformed
@@ -621,7 +625,8 @@ public class EditPane extends javax.swing.JPanel {
     }//GEN-LAST:event_associationsApplyBTActionPerformed
 
     private void associationsDeleteBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_associationsDeleteBTActionPerformed
-        // TODO add your handling code here:
+    	sourceTextArea.setText(UMLUtilities.removeAss(sourceTextArea.getText(), (String)selectedClassACB.getSelectedItem(), (String)selectedClassBCB.getSelectedItem()));
+    	UMLEditor.updateGUI();
     }//GEN-LAST:event_associationsDeleteBTActionPerformed
 
     private void classesApplyBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classesApplyBTActionPerformed
@@ -629,7 +634,8 @@ public class EditPane extends javax.swing.JPanel {
     }//GEN-LAST:event_classesApplyBTActionPerformed
 
     private void classesDeleteBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classesDeleteBTActionPerformed
-        // TODO add your handling code here:
+    	sourceTextArea.setText(UMLUtilities.deleteClass(sourceTextArea.getText(), (String)classesSelectedClassCB.getSelectedItem()));
+    	UMLEditor.updateGUI();
     }//GEN-LAST:event_classesDeleteBTActionPerformed
 
     private void bToARBStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_bToARBStateChanged

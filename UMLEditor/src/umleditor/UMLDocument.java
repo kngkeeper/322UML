@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import net.sourceforge.plantuml.SourceStringReader;
-import org.apache.commons.io.IOUtils;
+//import org.apache.commons.io.IOUtils;
 
 /**
  * Implementation of a text document, which is (indirectly) defined in

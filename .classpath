@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="editor"/>
+	<classpathentry kind="src" path="UMLEditor/src"/>
+	<classpathentry kind="lib" path="bin/editor/txtlib.jar"/>
+	<classpathentry kind="lib" path="bin/plantuml.jar"/>
+	<classpathentry kind="lib" path="bin/UMLEditor/build/classes/TextEditor/txtlib.jar"/>
+	<classpathentry kind="lib" path="bin/UMLEditor/build/classes/txtlib.jar"/>
+	<classpathentry kind="lib" path="bin/UMLEditor/src/TextEditor/txtlib.jar"/>
+	<classpathentry kind="lib" path="plantuml.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="UMLEditor/build/classes"/>
+</classpath>
