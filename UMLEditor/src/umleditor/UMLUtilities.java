@@ -6,6 +6,7 @@
 package umleditor;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  *
@@ -31,21 +32,16 @@ public class UMLUtilities {
     /**
      * Identifies the visibility of an object in a class
      * @param item plantUML line containing item
-     * @return 0 if private, 1 if protected, 2 if package private, 3 if public -1 if error
+     * @return char of visibility level in plantUML terms, space for none
      */
-    public static byte visibility(String item) {
-        switch (item.charAt(0)) {
-            case '-':
-                return 0;
-            case '#':
-                return 1;
-            case '~':
-                return 2;
-            case '+':
-                return 3;
-            default:
-                return -1;
+    public static char getVisibility(String item) {
+        char[] line = item.toCharArray();
+        for(char c : line) {
+            if(c == '-' || c == '#' || c == '~' || c == '+') {
+                return c;
+            }
         }
+        return ' ';
     }
     
     public static void changeVisibility(String fieldName, UMLClass classof, byte level) {
@@ -210,12 +206,17 @@ public class UMLUtilities {
      * @param fieldSource source line containing field
      * @return name of field
      */
-    public String getFieldName(String fieldSource) {
+    public static String getFieldName(String fieldSource) {
         String ret = "";
         String[] words = fieldSource.split(" ");
         for(int i=0;i<words.length;i++) {
             if(!words[i].contains("}")) {
-                return words[i];
+                if(words[i].contains("+") || words[i].contains("~") || words[i].contains("#") || words[i].contains("-")) {
+                    return words[i].substring(1);
+                }
+                else {
+                    return words[i];
+                }
             }
         }
         return ret;
@@ -226,7 +227,53 @@ public class UMLUtilities {
      * @param methodSource source line containing method
      * @return name of method
      */
-    public String getMethodName(String methodSource) {
+    public static String getMethodName(String methodSource) {
         return getFieldName(methodSource);
+    }
+    
+    public static String setVisibility(String source, String className, String fieldName, char visibility) {
+        String[] lines = source.split("\\n");
+        for(int i=0;i<lines.length;i++) {
+            if(lines[i].contains("class "+className)) {
+                while(!lines[i].contains(fieldName)) {
+                    i++;
+                }
+                char[] line = lines[i].toCharArray();
+                if(getVisibility(lines[i]) != ' ') {
+                    for(char c : line) {
+                        switch(c) {
+                            case '-':
+                                c = visibility;
+                                break;
+                            case '#':
+                                c = visibility;
+                                break;
+                            case '~':
+                                c = visibility;
+                                break;
+                            case '+':
+                                c = visibility;
+                                break;
+                        }
+                    }
+                }
+                else {
+                    for(int j=0;j<line.length;j++) {
+                        if(line[j] == '{') {
+                            while(line[j] != '}') { j++; }
+                        }
+                        else if(Character.isLetter(line[j])) {
+                            line[j-1] = visibility;
+                        }
+                    }
+                }
+                lines[i] = Arrays.toString(line);
+            }
+        }
+        String ret = "";
+        for(String line : lines) {
+            ret = ret + line + "\n";
+        }
+        return ret;
     }
 }
