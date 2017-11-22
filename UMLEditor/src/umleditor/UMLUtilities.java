@@ -277,4 +277,30 @@ public class UMLUtilities {
         }
         return ret;
     }
+    
+    /**
+     * Deletes a class from the UML document
+     * @param source plantUML source string
+     * @param className name of class to remove
+     * @return plantUML source string with class removed
+     */
+    public static String deleteClass(String source, String className) {
+        ArrayList<String> lines = new ArrayList(Arrays.asList(source.split("\\n")));
+        for(int i=0;i<lines.size();i++) {
+            if(lines.get(i).contains("class "+className+" {")) {
+                while(!lines.get(i).equals("}")) {
+                    lines.remove(i);
+                }
+                lines.remove(i);
+            }
+            else if(lines.get(i).contains("class "+className)) {
+                lines.remove(i);
+            }
+        }
+        String ret = "";
+        for(String line : lines) {
+            ret = ret + line + "\n";
+        }
+        return ret;
+    }
 }
