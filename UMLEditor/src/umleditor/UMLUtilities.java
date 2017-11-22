@@ -472,4 +472,24 @@ public class UMLUtilities {
         }
         return -1;
     }
+    
+    /**
+     * Gets the type of a named association in a given class
+     * @param source plantUML source string
+     * @param classA first class in association
+     * @param classB second class in association
+     * @return '*' if composition, '|' if extension, 'o' if aggregation, '-' if normal
+     */
+    public char getAssType(String source, String classA, String classB) {
+        ArrayList<String> assList = relationNames(source);
+        for(String ass : assList) {
+            if(ass.contains(classA) && ass.contains(classB)) {
+                for(char arrow : ARROW_SYMBOLS) {
+                    if(ass.contains(Character.toString(arrow)))
+                        return arrow;
+                }
+            }
+        }
+        return '-';
+    }
 }
