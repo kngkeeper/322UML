@@ -126,7 +126,11 @@ public class UMLDocument
         BufferedImage out = ImageIO.read(png);
         ImageIcon ico = new ImageIcon(out);
 		jta.setIcon(ico);
-		window = new JScrollPane(jta);
+		JScrollPane js = new JScrollPane(jta);
+                JPanel jp = new JPanel();
+                jp.add(js);
+                jp.add(new EditPane());
+                window = jp;
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
