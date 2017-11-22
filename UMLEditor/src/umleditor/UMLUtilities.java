@@ -364,6 +364,43 @@ public class UMLUtilities {
     }
     
     /**
+     * Removes a field from the specified class
+     * @param source plantUML source string
+     * @param className name of class to remove from
+     * @param fieldName name of field to remove
+     * @return plantUML source string with field removed
+     */
+    public static String deleteField(String source, String className, String fieldName) {
+        ArrayList<String> lines = new ArrayList(Arrays.asList(source.split("\\n")));
+        for(int i=0;i<lines.size();i++) {
+            if(lines.get(i).contains("class "+className+" {")) {
+                while(!lines.get(i).contains(fieldName) && !lines.get(i).equals("}")) {
+                    i++;
+                }
+                if(lines.get(i).contains(fieldName)) {
+                    lines.remove(i);
+                }
+            }
+        }
+        String ret = "";
+        for(String line : lines) {
+            ret = ret + line + "\n";
+        }
+        return ret;
+    }
+    
+    /**
+     * Removes a method from the specified class
+     * @param source plantUML source string
+     * @param className name of class to remove from
+     * @param methodName name of method to remove
+     * @return plantUML source string with method removed
+     */
+    public static String deleteMethod(String source, String className, String methodName) {
+        return deleteField(source,className,methodName);
+    }
+    
+    /**
      * Checks the direction of an association
      * @param source plantUML source file
      * @param classA first class in association
