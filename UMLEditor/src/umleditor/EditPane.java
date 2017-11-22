@@ -706,6 +706,11 @@ public class EditPane extends javax.swing.JPanel {
         updateClassesSelectedClassCB();
         updateSelectedClassACB();
         updateSelectedClassBCB();
+        updateMnfSelectedClassCB();
+    }
+    
+    public String getSourceText() {
+        return sourceTextArea.getText();
     }
     
     private void updateClassesSelectedClassCB() {
@@ -726,6 +731,13 @@ public class EditPane extends javax.swing.JPanel {
         ArrayList<String> classes = UMLUtilities.classNames(sourceTextArea.getText());
         for(String className : classes) {
             selectedClassBCB.addItem(className);
+        }
+    }
+    
+    private void updateMnfSelectedClassCB() {
+        ArrayList<String> classes = UMLUtilities.classNames(sourceTextArea.getText());
+        for(String className : classes) {
+            mnfSelectedClassCB.addItem(className);
         }
     }
 

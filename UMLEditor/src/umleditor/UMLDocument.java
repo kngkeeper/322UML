@@ -24,6 +24,8 @@ import ca.queensu.cs.dal.edfmwk.doc.DocumentException;
 import ca.queensu.cs.dal.edfmwk.doc.DocumentListener;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -46,6 +48,9 @@ public class UMLDocument
     private UMLContents contents;
     
     JLabel jta;
+    SourceStringReader reader;
+    EditPane ep = new EditPane();
+    File png = new File("out.png");
 
     /**
      * Constructs a document representation.
@@ -119,8 +124,7 @@ public class UMLDocument
 	contents.open(in);
         try {
                 String uml = contents.safelyGetText(0, contents.getLength());
-        SourceStringReader reader = new SourceStringReader(uml);
-        File png = new File("out.png");
+        reader = new SourceStringReader(uml);
         reader.outputImage(png);
         BufferedImage out = ImageIO.read(png);
         ImageIcon ico = new ImageIcon(out);
@@ -128,7 +132,7 @@ public class UMLDocument
 		JScrollPane js = new JScrollPane(jta);
                 JPanel jp = new JPanel();
                 jp.add(js);
-                EditPane ep = new EditPane();
+                contents.addDocumentListener(new UMLDocumentListener());
                 ep.setFieldDocument(contents);
                 jp.add(ep);
                 window = jp;
@@ -144,5 +148,49 @@ public class UMLDocument
      *    this package that need direct access (such as actions).
      */
     UMLContents getContents() { return contents; }
+    
+    public class UMLDocumentListener implements javax.swing.event.DocumentListener {
+        @Override
+        public void changedUpdate(javax.swing.event.DocumentEvent e) {
+            ep.loaded();
+            reader = new SourceStringReader(ep.getSourceText());
+            try {
+                reader.outputImage(png);
+                BufferedImage out = ImageIO.read(png);
+                ImageIcon ico = new ImageIcon(out);
+                jta.setIcon(ico);
+            } catch (IOException ex) {
+                Logger.getLogger(UMLDocument.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        @Override
+        public void insertUpdate(javax.swing.event.DocumentEvent e) {
+            ep.loaded();
+            reader = new SourceStringReader(ep.getSourceText());
+            try {
+                reader.outputImage(png);
+                BufferedImage out = ImageIO.read(png);
+                ImageIcon ico = new ImageIcon(out);
+                jta.setIcon(ico);
+            } catch (IOException ex) {
+                Logger.getLogger(UMLDocument.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        @Override
+        public void removeUpdate(javax.swing.event.DocumentEvent e) {
+            ep.loaded();
+            reader = new SourceStringReader(ep.getSourceText());
+            try {
+                reader.outputImage(png);
+                BufferedImage out = ImageIO.read(png);
+                ImageIcon ico = new ImageIcon(out);
+                jta.setIcon(ico);
+            } catch (IOException ex) {
+                Logger.getLogger(UMLDocument.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
 } // end class TextDocument
 
