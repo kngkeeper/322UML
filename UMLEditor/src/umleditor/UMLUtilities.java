@@ -231,6 +231,14 @@ public class UMLUtilities {
         return getFieldName(methodSource);
     }
     
+    /**
+     * Sets the visibility of a field or method in a given class in a source string
+     * @param source plantUML source string
+     * @param className name of the class which the field belongs to
+     * @param fieldName name of the field or method to change
+     * @param visibility char for visibility matching symbols used in pUML language
+     * @return plantUML source string with visibility changed
+     */
     public static String setVisibility(String source, String className, String fieldName, char visibility) {
         String[] lines = source.split("\\n");
         for(int i=0;i<lines.length;i++) {
@@ -270,6 +278,22 @@ public class UMLUtilities {
                 lines[i] = Arrays.toString(line);
             }
         }
+        String ret = "";
+        for(String line : lines) {
+            ret = ret + line + "\n";
+        }
+        return ret;
+    }
+    
+    /**
+     * Adds a new class to the UML document
+     * @param source plantUML source string
+     * @param className name of new class to add
+     * @return plantUML source string with new class added
+     */
+    public static String createClass(String source, String className) {
+        ArrayList<String> lines = new ArrayList(Arrays.asList(source.split("\\n")));
+        lines.add(1, "class "+className);
         String ret = "";
         for(String line : lines) {
             ret = ret + line + "\n";
