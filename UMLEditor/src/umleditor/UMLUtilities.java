@@ -14,6 +14,9 @@ import java.util.Arrays;
  */
 public class UMLUtilities {
     
+    private static final String[] ARROWS = {"-*","-o",".*",".o","|>","*-","o-","*.","o.","<|","--",".."};
+    private static final char[] ARROW_SYMBOLS = {'*','o','|'};
+    
     /**
      * Identifies the visibility of an object in a class
      * @param item plantUML line containing item
@@ -87,11 +90,10 @@ public class UMLUtilities {
      * @return list of Strings containing the entire source lines of relations
      */
     public static ArrayList<String> relationNames(String source) {
-        final String[] arrows = {"-*","-o",".*",".o","|>","*-","o-","*.","o.","<|"};
         ArrayList<String> ret = new ArrayList();
         String[] lines = source.split("\\n");
         for(int i=0;i<lines.length;i++) {
-            for(String arrow : arrows) {
+            for(String arrow : ARROWS) {
                 if (lines[i].contains(arrow)) {
                     ret.add(lines[i]);
                 }
@@ -359,5 +361,29 @@ public class UMLUtilities {
      */
     public static String createMethod(String source, String className, String methodName, char visibility, boolean isStatic, boolean isAbstract) {
         return createField(source,className,methodName,visibility,isStatic,isAbstract);
+    }
+    
+    /**
+     * Checks the direction of an association
+     * @param source plantUML source file
+     * @param classA first class in association
+     * @param classB second class in association
+     * @return true if association is A to B or directionless, false if B to A
+     */
+    public static boolean assAtoB(String source, String classA, String classB) {
+        ArrayList<String> assList = relationNames(source);
+        for(String ass : assList) {
+            if(ass.contains(classA) && ass.contains(classB)) {
+                int i = 0;
+                while(ass.charAt(i) != '-' || ass.charAt(i) != '.' || i<ass.length()) {
+                    for(char symb : ARROW_SYMBOLS) {
+                        if(symb == ass.charAt(i))
+                            return false;
+                    }
+                }
+                return true;
+            }
+        }
+        return false;
     }
 }
