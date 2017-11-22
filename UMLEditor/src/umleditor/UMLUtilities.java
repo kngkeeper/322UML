@@ -335,6 +335,42 @@ public class UMLUtilities {
     }
     
     /**
+     * Changes whether a class is abstract or not
+     * @param source plantUML source string
+     * @param className name of class to change
+     * @param isAbstract true if abstract, false if not
+     * @return  plantUML source string with changed class
+     */
+    public static String setClassIsAbstract(String source, String className, boolean isAbstract) {
+        String[] lines = source.split("\\n");
+        for(String line : lines) {
+            if(line.contains("class " + className)) {
+                if(isAbstract) {
+                    if(line.contains("abstract ")) {
+                        break;
+                    }
+                    else {
+                        line = line.replace("class " + className, "abstract class " + className);
+                    }
+                }
+                else {
+                    if(line.contains("abstract ")) {
+                        line = line.replace("abstract class " + className, "class " + className);
+                    }
+                    else {
+                        break;
+                    }
+                }
+            }
+        }
+        String ret = "";
+        for(String line : lines) {
+            ret = ret + line + "\n";
+        }
+        return ret;
+    }
+    
+    /**
      * Creates a new field in specified class
      * @param source plantUML source string
      * @param className name of class to add field to
