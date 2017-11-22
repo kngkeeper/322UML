@@ -132,6 +132,7 @@ public class UMLDocument
                 ep.setFieldDocument(contents);
                 jp.add(ep);
                 window = jp;
+                ep.loaded();
 	} catch (IOException e) {
 		e.printStackTrace();
 	}

@@ -5,6 +5,7 @@
  */
 package umleditor;
 
+import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.text.Document;
 
@@ -105,7 +106,7 @@ public class EditPane extends javax.swing.JPanel {
 
         classTypeLB.setText("Class Type");
 
-        classTypeCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Concrete", "Abstract", "Interface", "Enum", "Annotation" }));
+        classTypeCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Concrete", "Abstract" }));
         classTypeCB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 classTypeCBActionPerformed(evt);
@@ -696,6 +697,20 @@ public class EditPane extends javax.swing.JPanel {
 
     public void setFieldDocument(Document doc) {
         sourceTextArea.setDocument(doc);
+    }
+    
+    /**
+     * run once the document has been loaded via UMLDocument
+     */
+    public void loaded() {
+        updateClassesSelectedClassCB();
+    }
+    
+    private void updateClassesSelectedClassCB() {
+        ArrayList<String> classes = UMLUtilities.classNames(sourceTextArea.getText());
+        for(String className : classes) {
+            classesSelectedClassCB.addItem(className);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
