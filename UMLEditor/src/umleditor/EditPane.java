@@ -614,7 +614,7 @@ public class EditPane extends javax.swing.JPanel {
     		sourceTextArea.setText(UMLUtilities.deleteMethod(sourceTextArea.getText(), (String)mnfSelectedClassCB.getSelectedItem(), attributeNameTF.getText()));
     	else
     		sourceTextArea.setText(UMLUtilities.deleteField(sourceTextArea.getText(), (String)mnfSelectedClassCB.getSelectedItem(), attributeNameTF.getText()));
-    	UMLEditor.updateGUI();
+    	loaded();
     }//GEN-LAST:event_mnfDeleteBTActionPerformed
 
     private void sourceApplyBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sourceApplyBTActionPerformed
@@ -643,7 +643,7 @@ public class EditPane extends javax.swing.JPanel {
 
     private void associationsDeleteBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_associationsDeleteBTActionPerformed
     	sourceTextArea.setText(UMLUtilities.removeAss(sourceTextArea.getText(), (String)selectedClassACB.getSelectedItem(), (String)selectedClassBCB.getSelectedItem()));
-    	UMLEditor.updateGUI();
+    	loaded();
     }//GEN-LAST:event_associationsDeleteBTActionPerformed
 
     private void classesApplyBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classesApplyBTActionPerformed
@@ -660,7 +660,7 @@ public class EditPane extends javax.swing.JPanel {
 
     private void classesDeleteBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classesDeleteBTActionPerformed
     	sourceTextArea.setText(UMLUtilities.deleteClass(sourceTextArea.getText(), (String)classesSelectedClassCB.getSelectedItem()));
-    	UMLEditor.updateGUI();
+    	loaded();
     }//GEN-LAST:event_classesDeleteBTActionPerformed
 
     private void bToARBStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_bToARBStateChanged

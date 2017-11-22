@@ -481,6 +481,7 @@ public class UMLUtilities {
                         if(symb == ass.charAt(i))
                             return false;
                     }
+                    i++;
                 }
                 return true;
             }
