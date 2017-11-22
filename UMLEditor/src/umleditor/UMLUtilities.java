@@ -493,6 +493,13 @@ public class UMLUtilities {
         return '-';
     }
     
+    /**
+     * Gets the label of an association
+     * @param source plantUML source string
+     * @param classA first class in association
+     * @param classB second class in association
+     * @return label from association
+     */
     public static String getAssLabel(String source, String classA, String classB) {
         ArrayList<String> assList = relationNames(source);
         for(String ass : assList) {
