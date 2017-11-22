@@ -307,6 +307,34 @@ public class UMLUtilities {
     }
     
     /**
+     * Replaces the name of a class
+     * @param source plantUML source string
+     * @param className name of class to rename
+     * @param newName new name for class
+     * @return plantUML source string with name changed
+     */
+    public static String renameClass(String source, String className, String newName) {
+        String[] lines = source.split("\\n");
+        for(String line : lines) {
+            if(line.contains("class "+className)) {
+                line = line.replaceAll(className, newName);
+            }
+            else {
+                for(String arrow : ARROWS) {
+                    if(line.contains(arrow) && line.contains(className)) {
+                        line = line.replaceAll(className, newName);
+                    }
+                }
+            }
+        }
+        String ret = "";
+        for(String line : lines) {
+            ret = ret + line + "\n";
+        }
+        return ret;
+    }
+    
+    /**
      * Creates a new field in specified class
      * @param source plantUML source string
      * @param className name of class to add field to
