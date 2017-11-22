@@ -20,10 +20,18 @@ import ca.queensu.cs.dal.edfmwk.i18n.Localizers;
 import ca.queensu.cs.dal.edfmwk.menu.MenuDescriptor;
 import ca.queensu.cs.dal.edfmwk.menu.MenuElement;
 import ca.queensu.cs.dal.edfmwk.Menus;
+import ca.queensu.cs.dal.edfmwk.win.CommonWindow;
 import ca.queensu.cs.dal.flex.Register;
 import ca.queensu.cs.dal.flex.i18n.Localizer;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import net.sourceforge.plantuml.SourceStringReader;
 
 /**
  * A simple text editor using the document framework.
@@ -106,6 +114,30 @@ public class UMLEditor extends Application {
     public static void main(String args[]) {
 	new UMLEditor();
     } // end main
+    
+    public static void updateGUI() throws IOException{
+        JLabel jta = new JLabel();
+        Application app = Application.getApplication();
+        CommonWindow win = (CommonWindow) app.getWindowManager();
+        UMLDocument doc = (UMLDocument) app.getActiveDocument();
+        UMLContents contents = (UMLContents) doc.getContents();
+	JTextArea area = (JTextArea) ((JScrollPane) win.getContentPane()).getViewport().getView();
+        String uml = contents.safelyGetText(0, contents.getLength());
+        //String uml = IOUtils.toString(source, StandardCharsets.UTF_8);
+        SourceStringReader reader = new SourceStringReader(uml);
+        File png = new File("out.png");
+        reader.outputImage(png);
+        BufferedImage out = ImageIO.read(png);
+        ImageIcon ico = new ImageIcon(out);
+		jta.setIcon(ico);
+		JScrollPane js = new JScrollPane(jta);
+                JPanel jp = new JPanel();
+                jp.add(js);
+                EditPane ep = new EditPane();
+                ep.setFieldDocument(contents);
+                jp.add(ep);
+                win.setContentPane(jp);
+    }
 
     /**
      * Returns the main application, so that other classes can access some
