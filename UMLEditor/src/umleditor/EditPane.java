@@ -704,12 +704,28 @@ public class EditPane extends javax.swing.JPanel {
      */
     public void loaded() {
         updateClassesSelectedClassCB();
+        updateSelectedClassACB();
+        updateSelectedClassBCB();
     }
     
     private void updateClassesSelectedClassCB() {
         ArrayList<String> classes = UMLUtilities.classNames(sourceTextArea.getText());
         for(String className : classes) {
             classesSelectedClassCB.addItem(className);
+        }
+    }
+    
+    private void updateSelectedClassACB() {
+        ArrayList<String> classes = UMLUtilities.classNames(sourceTextArea.getText());
+        for(String className : classes) {
+            selectedClassACB.addItem(className);
+        }
+    }
+    
+    private void updateSelectedClassBCB() {
+        ArrayList<String> classes = UMLUtilities.classNames(sourceTextArea.getText());
+        for(String className : classes) {
+            selectedClassBCB.addItem(className);
         }
     }
 
