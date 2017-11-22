@@ -131,6 +131,11 @@ public class EditPane extends javax.swing.JPanel {
         classesResetBT.setText("Reset");
         classesResetBT.setMaximumSize(new java.awt.Dimension(64, 25));
         classesResetBT.setMinimumSize(new java.awt.Dimension(64, 25));
+        classesResetBT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                classesResetBTActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout classesPanelLayout = new javax.swing.GroupLayout(classesPanel);
         classesPanel.setLayout(classesPanelLayout);
@@ -184,7 +189,7 @@ public class EditPane extends javax.swing.JPanel {
         selectedClassALB.setText("Selected Class A");
 
         selectedClassACB.setMaximumRowCount(99999);
-        selectedClassACB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        selectedClassACB.setModel(new DefaultComboBoxModel(UMLUtilities.classNames(sourceTextArea.getText()).toArray()));
         selectedClassACB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 selectedClassACBActionPerformed(evt);
@@ -194,7 +199,7 @@ public class EditPane extends javax.swing.JPanel {
         selectedClassBLB.setText("Selected Class B");
 
         selectedClassBCB.setMaximumRowCount(999999);
-        selectedClassBCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        selectedClassBCB.setModel(new DefaultComboBoxModel(UMLUtilities.classNames(sourceTextArea.getText()).toArray()));
 
         jLabel6.setText("Association");
 
@@ -292,6 +297,11 @@ public class EditPane extends javax.swing.JPanel {
         associationsResetBT.setText("Reset");
         associationsResetBT.setMaximumSize(new java.awt.Dimension(64, 25));
         associationsResetBT.setMinimumSize(new java.awt.Dimension(64, 25));
+        associationsResetBT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                associationsResetBTActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout associationsPanelLayout = new javax.swing.GroupLayout(associationsPanel);
         associationsPanel.setLayout(associationsPanelLayout);
@@ -369,7 +379,7 @@ public class EditPane extends javax.swing.JPanel {
         mnfSelectedClassLB.setText("Selected Class");
 
         mnfSelectedClassCB.setMaximumRowCount(99999);
-        mnfSelectedClassCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        mnfSelectedClassCB.setModel(new DefaultComboBoxModel(UMLUtilities.classNames(sourceTextArea.getText()).toArray()));
 
         selectedAttributeLB.setText("Selected Attribute");
 
@@ -445,6 +455,11 @@ public class EditPane extends javax.swing.JPanel {
         mnfResetBT.setText("Reset");
         mnfResetBT.setMaximumSize(new java.awt.Dimension(64, 25));
         mnfResetBT.setMinimumSize(new java.awt.Dimension(64, 25));
+        mnfResetBT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnfResetBTActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout mnfPanelLayout = new javax.swing.GroupLayout(mnfPanel);
         mnfPanel.setLayout(mnfPanelLayout);
@@ -470,9 +485,9 @@ public class EditPane extends javax.swing.JPanel {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(mnfPanelLayout.createSequentialGroup()
                         .addComponent(mnfApplyBT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                         .addComponent(mnfDeleteBT)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                        .addGap(72, 72, 72)
                         .addComponent(mnfResetBT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -526,6 +541,11 @@ public class EditPane extends javax.swing.JPanel {
         });
 
         sourceResetBT.setText("Reset");
+        sourceResetBT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sourceResetBTActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout sourcePanelLayout = new javax.swing.GroupLayout(sourcePanel);
         sourcePanel.setLayout(sourcePanelLayout);
@@ -651,6 +671,22 @@ public class EditPane extends javax.swing.JPanel {
     private void classesSelectedClassCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classesSelectedClassCBActionPerformed
         classNameTF.setText((String)classesSelectedClassCB.getSelectedItem());
     }//GEN-LAST:event_classesSelectedClassCBActionPerformed
+
+    private void classesResetBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classesResetBTActionPerformed
+        UMLEditor.updateGUI();
+    }//GEN-LAST:event_classesResetBTActionPerformed
+
+    private void associationsResetBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_associationsResetBTActionPerformed
+        UMLEditor.updateGUI();
+    }//GEN-LAST:event_associationsResetBTActionPerformed
+
+    private void mnfResetBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnfResetBTActionPerformed
+        UMLEditor.updateGUI();
+    }//GEN-LAST:event_mnfResetBTActionPerformed
+
+    private void sourceResetBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sourceResetBTActionPerformed
+        UMLEditor.updateGUI();
+    }//GEN-LAST:event_sourceResetBTActionPerformed
 
     public void setFieldDocument(Document doc) {
         sourceTextArea.setDocument(doc);

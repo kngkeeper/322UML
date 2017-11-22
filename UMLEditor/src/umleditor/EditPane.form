@@ -196,6 +196,9 @@
                   <Dimension value="[64, 25]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="classesResetBTActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -301,13 +304,8 @@
             <Component class="javax.swing.JComboBox" name="selectedClassACB">
               <Properties>
                 <Property name="maximumRowCount" type="int" value="99999"/>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
-                  </StringArray>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="new DefaultComboBoxModel(UMLUtilities.classNames(sourceTextArea.getText()).toArray())" type="code"/>
                 </Property>
               </Properties>
               <Events>
@@ -325,13 +323,8 @@
             <Component class="javax.swing.JComboBox" name="selectedClassBCB">
               <Properties>
                 <Property name="maximumRowCount" type="int" value="999999"/>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
-                  </StringArray>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="new DefaultComboBoxModel(UMLUtilities.classNames(sourceTextArea.getText()).toArray())" type="code"/>
                 </Property>
               </Properties>
               <AuxValues>
@@ -516,6 +509,9 @@
                   <Dimension value="[64, 25]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="associationsResetBTActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -553,9 +549,9 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="mnfApplyBT" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="71" max="32767" attributes="0"/>
+                              <EmptySpace pref="70" max="32767" attributes="0"/>
                               <Component id="mnfDeleteBT" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="71" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
                               <Component id="mnfResetBT" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -610,13 +606,8 @@
             <Component class="javax.swing.JComboBox" name="mnfSelectedClassCB">
               <Properties>
                 <Property name="maximumRowCount" type="int" value="99999"/>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
-                  </StringArray>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="new DefaultComboBoxModel(UMLUtilities.classNames(sourceTextArea.getText()).toArray())" type="code"/>
                 </Property>
               </Properties>
               <AuxValues>
@@ -743,6 +734,9 @@
                   <Dimension value="[64, 25]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnfResetBTActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -820,6 +814,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Reset"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sourceResetBTActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
