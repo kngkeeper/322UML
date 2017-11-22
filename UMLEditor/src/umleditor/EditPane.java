@@ -704,23 +704,26 @@ public class EditPane extends javax.swing.JPanel {
     }//GEN-LAST:event_classesSelectedClassCBActionPerformed
 
     private void classesResetBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classesResetBTActionPerformed
-        UMLEditor.updateGUI();
+        loaded();
     }//GEN-LAST:event_classesResetBTActionPerformed
 
     private void associationsResetBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_associationsResetBTActionPerformed
-        UMLEditor.updateGUI();
+        loaded();
     }//GEN-LAST:event_associationsResetBTActionPerformed
 
     private void mnfResetBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnfResetBTActionPerformed
-        UMLEditor.updateGUI();
+        loaded();
     }//GEN-LAST:event_mnfResetBTActionPerformed
 
     private void sourceResetBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sourceResetBTActionPerformed
-        UMLEditor.updateGUI();
+        sourceTextArea.setText(originalText);
     }//GEN-LAST:event_sourceResetBTActionPerformed
 
+    private String originalText;
+    
     public void setFieldDocument(Document doc) {
         sourceTextArea.setDocument(doc);
+        originalText = sourceTextArea.getText();
     }
     
     /**
