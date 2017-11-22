@@ -75,8 +75,6 @@ public class UMLEditor extends Application {
 		super(title);
 		mainPanel = new MainPanel();
                 //mainPanel.add(new JLabel());
-                EditPane editPane = new EditPane();
-                mainPanel.add(editPane);
 		DocumentType fac = new UMLType();
 		DocumentManager manager = getDocumentManager();
 		//System.err.println("Got to return from getDocumentManager");
