@@ -26,6 +26,8 @@ import ca.queensu.cs.dal.flex.i18n.Localizer;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -115,28 +117,32 @@ public class UMLEditor extends Application {
 	new UMLEditor();
     } // end main
     
-    public static void updateGUI() throws IOException{
-        JLabel jta = new JLabel();
-        Application app = Application.getApplication();
-        CommonWindow win = (CommonWindow) app.getWindowManager();
-        UMLDocument doc = (UMLDocument) app.getActiveDocument();
-        UMLContents contents = (UMLContents) doc.getContents();
-	JTextArea area = (JTextArea) ((JScrollPane) win.getContentPane()).getViewport().getView();
-        String uml = contents.safelyGetText(0, contents.getLength());
-        //String uml = IOUtils.toString(source, StandardCharsets.UTF_8);
-        SourceStringReader reader = new SourceStringReader(uml);
-        File png = new File("out.png");
-        reader.outputImage(png);
-        BufferedImage out = ImageIO.read(png);
-        ImageIcon ico = new ImageIcon(out);
-		jta.setIcon(ico);
-		JScrollPane js = new JScrollPane(jta);
-                JPanel jp = new JPanel();
-                jp.add(js);
-                EditPane ep = new EditPane();
-                ep.setFieldDocument(contents);
-                jp.add(ep);
-                win.setContentPane(jp);
+    public static void updateGUI(){
+        try {
+            JLabel jta = new JLabel();
+            Application app = Application.getApplication();
+            CommonWindow win = (CommonWindow) app.getActiveWindow();
+            UMLDocument doc = (UMLDocument) app.getActiveDocument();
+            UMLContents contents = (UMLContents) doc.getContents();
+            JTextArea area = (JTextArea) ((JScrollPane) win.getContentPane()).getViewport().getView();
+            String uml = contents.safelyGetText(0, contents.getLength());
+            //String uml = IOUtils.toString(source, StandardCharsets.UTF_8);
+            SourceStringReader reader = new SourceStringReader(uml);
+            File png = new File("out.png");
+            reader.outputImage(png);
+            BufferedImage out = ImageIO.read(png);
+            ImageIcon ico = new ImageIcon(out);
+            jta.setIcon(ico);
+            JScrollPane js = new JScrollPane(jta);
+            JPanel jp = new JPanel();
+            jp.add(js);
+            EditPane ep = new EditPane();
+            ep.setFieldDocument(contents);
+            jp.add(ep);
+            win.setContentPane(jp);
+        } catch (IOException ex) {
+            Logger.getLogger(UMLEditor.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
