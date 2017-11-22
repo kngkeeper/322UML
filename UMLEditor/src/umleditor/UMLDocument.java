@@ -129,7 +129,9 @@ public class UMLDocument
 		JScrollPane js = new JScrollPane(jta);
                 JPanel jp = new JPanel();
                 jp.add(js);
-                jp.add(new EditPane());
+                EditPane ep = new EditPane();
+                ep.setFieldDocument(contents);
+                jp.add(ep);
                 window = jp;
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
