@@ -204,7 +204,7 @@ public class EditPane extends javax.swing.JPanel {
 
         jLabel6.setText("Association");
 
-        associationTypeCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Extension", "Composistion", "Aggregation", "Ordinary" }));
+        associationTypeCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Extension", "Composition", "Aggregation", "Ordinary" }));
 
         associactionDirectionLB.setText("Direction");
 
@@ -622,7 +622,23 @@ public class EditPane extends javax.swing.JPanel {
     }//GEN-LAST:event_sourceApplyBTActionPerformed
 
     private void associationsApplyBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_associationsApplyBTActionPerformed
-        // TODO add your handling code here:
+        String classA = (String)selectedClassACB.getSelectedItem();
+        String classB = (String)selectedClassBCB.getSelectedItem();
+        String source = sourceTextArea.getText();
+        String assTypeString = (String)associationTypeCB.getSelectedItem();
+        char assType = 0;
+        if (assTypeString.equals("Extension"))
+        	assType = '|';
+        else if (assTypeString.equals("Composition"))
+        	assType = '*';
+        else if (assTypeString.equals("Aggregation"))
+        	assType = 'o';
+        else // (assTypeString.equals("Ordinary"))
+        	assType = '-';
+        boolean aToB = aToBRB.isSelected();
+        String label = associationLabelTF.getText();
+        if (!UMLUtilities.assAtoB(source, classA, classB) && !UMLUtilities.assAtoB(source, classB, classA))
+        	UMLUtilities.createAss(source, classA, classB, assType, aToB, label);
     }//GEN-LAST:event_associationsApplyBTActionPerformed
 
     private void associationsDeleteBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_associationsDeleteBTActionPerformed
@@ -631,7 +647,15 @@ public class EditPane extends javax.swing.JPanel {
     }//GEN-LAST:event_associationsDeleteBTActionPerformed
 
     private void classesApplyBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classesApplyBTActionPerformed
-        // TODO add your handling code here:
+        if (classesSelectedClassCB.getSelectedItem().equals("new class"))
+        	sourceTextArea.setText(UMLUtilities.createClass(sourceTextArea.getText(), classNameTF.getText()));
+        else {
+        	sourceTextArea.setText(UMLUtilities.renameClass(sourceTextArea.getText(), (String)classesSelectedClassCB.getSelectedItem(), classNameTF.getText()));
+        	boolean isAbstract = true;
+        	if (classTypeCB.getSelectedItem().equals("Concrete"))
+        		isAbstract = false;
+        	sourceTextArea.setText(UMLUtilities.setClassIsAbstract(sourceTextArea.getText(), classNameTF.getText(), isAbstract));
+        }
     }//GEN-LAST:event_classesApplyBTActionPerformed
 
     private void classesDeleteBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classesDeleteBTActionPerformed
