@@ -5,6 +5,7 @@
  */
 package umleditor;
 
+import java.awt.Dimension;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.text.Document;
@@ -229,6 +230,7 @@ public class EditPane extends javax.swing.JPanel {
         aSideMultiplicitiesTF.setMaximumSize(new java.awt.Dimension(55, 19));
         aSideMultiplicitiesTF.setMinimumSize(new java.awt.Dimension(55, 19));
         aSideMultiplicitiesTF.setName(""); // NOI18N
+        aSideMultiplicitiesTF.setPreferredSize(new Dimension(60, 25));
         aSideMultiplicitiesTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 aSideMultiplicitiesTFActionPerformed(evt);
@@ -237,7 +239,7 @@ public class EditPane extends javax.swing.JPanel {
 
         bSideMultiplicitiesTF.setMaximumSize(new java.awt.Dimension(55, 19));
         bSideMultiplicitiesTF.setMinimumSize(new java.awt.Dimension(55, 19));
-
+        bSideMultiplicitiesTF.setPreferredSize(new Dimension(60, 25));
         bSideMultiplicitiesLB.setText("B-Side");
 
         javax.swing.GroupLayout multiplicitiesPanelLayout = new javax.swing.GroupLayout(multiplicitiesPanel);
@@ -639,6 +641,9 @@ public class EditPane extends javax.swing.JPanel {
         String label = associationLabelTF.getText();
         if (!UMLUtilities.assAtoB(source, classA, classB) && !UMLUtilities.assAtoB(source, classB, classA))
         	UMLUtilities.createAss(source, classA, classB, assType, aToB, label);
+        else {
+        	
+        }
         
     }//GEN-LAST:event_associationsApplyBTActionPerformed
 
