@@ -386,4 +386,53 @@ public class UMLUtilities {
         }
         return false;
     }
+    
+    /**
+     * Checks the multiplicity of class A in an association
+     * @param source plantUML source string
+     * @param classA first class in association
+     * @param classB second class in association
+     * @return multiplicity value of class A, -1 if no multiplicity label
+     */
+    public static int getaMultiplicity(String source, String classA, String classB) {
+        ArrayList<String> assList = relationNames(source);
+        for(String ass : assList) {
+            if(ass.contains(classA) && ass.contains(classB)) {
+                String[] words = ass.split(" ");
+                for(int i=0;i<words.length;i++) {
+                    if(words[i].contains("\"")) {
+                        String tmp = words[i].replaceAll("[^0-9]", "");
+                        return Integer.parseInt(tmp);
+                    }
+                }
+            }
+        }
+        return -1;
+    }
+    
+    /**
+     * Checks the multiplicity of class B in an association
+     * @param source plantUML source string
+     * @param classA first class in association
+     * @param classB second class in association
+     * @return multiplicity value of class B, -1 if no multiplicity label
+     */
+    public static int getbMultiplicity(String source, String classA, String classB) {
+        ArrayList<String> assList = relationNames(source);
+        for(String ass : assList) {
+            if(ass.contains(classA) && ass.contains(classB)) {
+                String[] words = ass.split(" ");
+                boolean past = false;
+                for(int i=0;i<words.length;i++) {
+                    if(words[i].contains("\"") && !past)
+                        past = true;
+                    else if(words[i].contains("\"") && past) {
+                        String tmp = words[i].replaceAll("[^0-9]", "");
+                        return Integer.parseInt(tmp);
+                    }
+                }
+            }
+        }
+        return -1;
+    }
 }
