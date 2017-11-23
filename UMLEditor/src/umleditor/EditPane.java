@@ -693,6 +693,7 @@ public class EditPane extends javax.swing.JPanel {
     private void methodsRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_methodsRBActionPerformed
         fieldsRB.setSelected(false);
         selectedAttributeCB.removeAllItems();
+        selectedAttributeCB.addItem("new method");
         ArrayList<String> classMethods = UMLUtilities.classMethods(getSourceText(), mnfSelectedClassCB.getSelectedItem().toString());
         for(String className : classMethods) {
             selectedAttributeCB.addItem(className);
@@ -706,6 +707,7 @@ public class EditPane extends javax.swing.JPanel {
     private void fieldsRBActionPerformed1(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldsRBActionPerformed1
         methodsRB.setSelected(false);
         selectedAttributeCB.removeAllItems();
+        selectedAttributeCB.addItem("new field");
         ArrayList<String> classFields = UMLUtilities.classFields(getSourceText(), mnfSelectedClassCB.getSelectedItem().toString());
         for(String className : classFields) {
             selectedAttributeCB.addItem(className);
