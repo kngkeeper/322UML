@@ -648,6 +648,7 @@ public class EditPane extends javax.swing.JPanel {
 
     private void classesApplyBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classesApplyBTActionPerformed
         String className = classNameTF.getText();
+        className.replaceAll(" ", "");
         if (classesSelectedClassCB.getSelectedItem().equals("new class"))
         	sourceTextArea.setText(UMLUtilities.createClass(sourceTextArea.getText(), className));
         else {
