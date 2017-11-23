@@ -222,6 +222,7 @@ public class EditPane extends javax.swing.JPanel {
 
         associationLabelLB.setText("Association Label");
 
+
         multiplicitiesLB.setText("Multiplicities");
 
         aSideMultiplicitiesLB.setText("A-Side");
@@ -606,7 +607,7 @@ public class EditPane extends javax.swing.JPanel {
     }//GEN-LAST:event_fieldsRBActionPerformed
 
     private void mnfApplyBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnfApplyBTActionPerformed
-        // TODO add your handling code here:
+        //-----------------------------------------------
     }//GEN-LAST:event_mnfApplyBTActionPerformed
 
     private void mnfDeleteBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnfDeleteBTActionPerformed
@@ -638,7 +639,7 @@ public class EditPane extends javax.swing.JPanel {
         boolean aToB = aToBRB.isSelected();
         String label = associationLabelTF.getText();
         if (!UMLUtilities.assAtoB(source, classA, classB) && !UMLUtilities.assAtoB(source, classB, classA))
-        	UMLUtilities.createAss(source, classA, classB, assType, aToB, label);
+        	sourceTextArea.setText(UMLUtilities.createAss(source, classA, classB, assType, aToB, label));
     }//GEN-LAST:event_associationsApplyBTActionPerformed
 
     private void associationsDeleteBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_associationsDeleteBTActionPerformed
@@ -657,7 +658,6 @@ public class EditPane extends javax.swing.JPanel {
         	if (classTypeCB.getSelectedItem().equals("Concrete"))
         		isAbstract = false;
         	sourceTextArea.setText(UMLUtilities.setClassIsAbstract(sourceTextArea.getText(), className, isAbstract));
-                
         }
     }//GEN-LAST:event_classesApplyBTActionPerformed
 
