@@ -608,6 +608,14 @@ public class UMLUtilities {
         if(assType == '-') {
             lines.add(1, classA + " -- " + classB + " : " + label);
         }
+        else if(assType == '|') {
+            if(aToB) {
+                lines.add(1, classA + " --" + assType + '>' + " " + classB + " : " + label);
+            }
+            else {
+                lines.add(1, classA + " " + '<' + assType + "-- " + classB + " : " + label);
+            }
+        }
         else if(aToB) {
             lines.add(1, classA + " --" + assType + " " + classB + " : " + label);
         }
