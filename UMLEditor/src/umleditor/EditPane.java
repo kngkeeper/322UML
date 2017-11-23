@@ -222,7 +222,6 @@ public class EditPane extends javax.swing.JPanel {
 
         associationLabelLB.setText("Association Label");
 
-
         multiplicitiesLB.setText("Multiplicities");
 
         aSideMultiplicitiesLB.setText("A-Side");
@@ -382,6 +381,11 @@ public class EditPane extends javax.swing.JPanel {
 
         mnfSelectedClassCB.setMaximumRowCount(99999);
         mnfSelectedClassCB.setModel(new DefaultComboBoxModel(UMLUtilities.classNames(sourceTextArea.getText()).toArray()));
+        mnfSelectedClassCB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnfSelectedClassCBActionPerformed(evt);
+            }
+        });
 
         selectedAttributeLB.setText("Selected Attribute");
 
@@ -688,6 +692,11 @@ public class EditPane extends javax.swing.JPanel {
 
     private void methodsRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_methodsRBActionPerformed
         fieldsRB.setSelected(false);
+        selectedAttributeCB.removeAllItems();
+        ArrayList<String> classMethods = UMLUtilities.classMethods(getSourceText(), mnfSelectedClassCB.getSelectedItem().toString());
+        for(String className : classMethods) {
+            selectedAttributeCB.addItem(className);
+        }
     }//GEN-LAST:event_methodsRBActionPerformed
 
     private void methodsRBActionPerformed1(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_methodsRBActionPerformed1
@@ -696,6 +705,11 @@ public class EditPane extends javax.swing.JPanel {
 
     private void fieldsRBActionPerformed1(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldsRBActionPerformed1
         methodsRB.setSelected(false);
+        selectedAttributeCB.removeAllItems();
+        ArrayList<String> classFields = UMLUtilities.classFields(getSourceText(), mnfSelectedClassCB.getSelectedItem().toString());
+        for(String className : classFields) {
+            selectedAttributeCB.addItem(className);
+        }
     }//GEN-LAST:event_fieldsRBActionPerformed1
 
     private void methodsRBItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_methodsRBItemStateChanged
@@ -727,6 +741,16 @@ public class EditPane extends javax.swing.JPanel {
     private void sourceResetBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sourceResetBTActionPerformed
         sourceTextArea.setText(originalText);
     }//GEN-LAST:event_sourceResetBTActionPerformed
+
+    private void mnfSelectedClassCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnfSelectedClassCBActionPerformed
+        fieldsRB.setSelected(false);
+        methodsRB.setSelected(true);
+        selectedAttributeCB.removeAllItems();
+        ArrayList<String> classMethods = UMLUtilities.classMethods(getSourceText(), mnfSelectedClassCB.getSelectedItem().toString());
+        for(String className : classMethods) {
+            selectedAttributeCB.addItem(className);
+        }
+    }//GEN-LAST:event_mnfSelectedClassCBActionPerformed
 
     private String originalText;
     
@@ -779,6 +803,13 @@ public class EditPane extends javax.swing.JPanel {
         ArrayList<String> classes = UMLUtilities.classNames(sourceTextArea.getText());
         for(String className : classes) {
             mnfSelectedClassCB.addItem(className);
+        }
+        fieldsRB.setSelected(false);
+        methodsRB.setSelected(true);
+        selectedAttributeCB.removeAllItems();
+        ArrayList<String> classMethods = UMLUtilities.classMethods(getSourceText(), mnfSelectedClassCB.getSelectedItem().toString());
+        for(String className : classMethods) {
+            selectedAttributeCB.addItem(className);
         }
     }
 
