@@ -605,22 +605,25 @@ public class UMLUtilities {
      */
     public static String createAss(String source, String classA, String classB, char assType, boolean aToB, String label) {
         ArrayList<String> lines = new ArrayList(Arrays.asList(source.split("\\n")));
+        if(!label.equals("")) {
+            label = " : " + label;
+        }
         if(assType == '-') {
-            lines.add(1, classA + " -- " + classB + " : " + label);
+            lines.add(1, classA + " -- " + classB + label);
         }
         else if(assType == '|') {
             if(aToB) {
-                lines.add(1, classA + " --" + assType + '>' + " " + classB + " : " + label);
+                lines.add(1, classA + " --" + assType + '>' + " " + classB + label);
             }
             else {
-                lines.add(1, classA + " " + '<' + assType + "-- " + classB + " : " + label);
+                lines.add(1, classA + " " + '<' + assType + "-- " + classB + label);
             }
         }
         else if(aToB) {
-            lines.add(1, classA + " --" + assType + " " + classB + " : " + label);
+            lines.add(1, classA + " --" + assType + " " + classB + label);
         }
         else {
-            lines.add(1, classA + " " + assType + "-- " + classB + " : " + label);
+            lines.add(1, classA + " " + assType + "-- " + classB + label);
         }
         String ret = "";
         for(String line : lines) {
