@@ -701,6 +701,12 @@ public class EditPane extends javax.swing.JPanel {
 
     private void classesSelectedClassCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classesSelectedClassCBActionPerformed
         classNameTF.setText((String)classesSelectedClassCB.getSelectedItem());
+        if(UMLUtilities.classIsAbstract(getSourceText(), classNameTF.getText())) {
+            classTypeCB.setSelectedIndex(1);
+        }
+        else {
+            classTypeCB.setSelectedIndex(0);
+        }
     }//GEN-LAST:event_classesSelectedClassCBActionPerformed
 
     private void classesResetBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classesResetBTActionPerformed
@@ -741,6 +747,7 @@ public class EditPane extends javax.swing.JPanel {
     }
     
     private void updateClassesSelectedClassCB() {
+        classesSelectedClassCB.removeAllItems();
         ArrayList<String> classes = UMLUtilities.classNames(sourceTextArea.getText());
         for(String className : classes) {
             classesSelectedClassCB.addItem(className);
@@ -748,6 +755,7 @@ public class EditPane extends javax.swing.JPanel {
     }
     
     private void updateSelectedClassACB() {
+        selectedClassACB.removeAllItems();
         ArrayList<String> classes = UMLUtilities.classNames(sourceTextArea.getText());
         for(String className : classes) {
             selectedClassACB.addItem(className);
@@ -755,6 +763,7 @@ public class EditPane extends javax.swing.JPanel {
     }
     
     private void updateSelectedClassBCB() {
+        selectedClassBCB.removeAllItems();
         ArrayList<String> classes = UMLUtilities.classNames(sourceTextArea.getText());
         for(String className : classes) {
             selectedClassBCB.addItem(className);
@@ -762,6 +771,7 @@ public class EditPane extends javax.swing.JPanel {
     }
     
     private void updateMnfSelectedClassCB() {
+        mnfSelectedClassCB.removeAllItems();
         ArrayList<String> classes = UMLUtilities.classNames(sourceTextArea.getText());
         for(String className : classes) {
             mnfSelectedClassCB.addItem(className);
