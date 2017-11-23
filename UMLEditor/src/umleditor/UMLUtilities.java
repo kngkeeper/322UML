@@ -173,7 +173,7 @@ public class UMLUtilities {
         String classSource = getClassSource(source, className);
         String[] lines = classSource.split("\\n");
         for(String line : lines) {
-            if(!line.contains("class "+className) && !line.equals("}") && !line.contains("()")) {
+            if(!line.contains("class "+className) && !line.equals("}") && line.contains("()")) {
                 ret.add(line);
             }
         }
