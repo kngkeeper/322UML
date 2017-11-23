@@ -647,14 +647,16 @@ public class EditPane extends javax.swing.JPanel {
     }//GEN-LAST:event_associationsDeleteBTActionPerformed
 
     private void classesApplyBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classesApplyBTActionPerformed
+        String className = classNameTF.getText();
         if (classesSelectedClassCB.getSelectedItem().equals("new class"))
-        	sourceTextArea.setText(UMLUtilities.createClass(sourceTextArea.getText(), classNameTF.getText()));
+        	sourceTextArea.setText(UMLUtilities.createClass(sourceTextArea.getText(), className));
         else {
         	sourceTextArea.setText(UMLUtilities.renameClass(sourceTextArea.getText(), (String)classesSelectedClassCB.getSelectedItem(), classNameTF.getText()));
         	boolean isAbstract = true;
         	if (classTypeCB.getSelectedItem().equals("Concrete"))
         		isAbstract = false;
-        	sourceTextArea.setText(UMLUtilities.setClassIsAbstract(sourceTextArea.getText(), classNameTF.getText(), isAbstract));
+        	sourceTextArea.setText(UMLUtilities.setClassIsAbstract(sourceTextArea.getText(), className, isAbstract));
+                
         }
     }//GEN-LAST:event_classesApplyBTActionPerformed
 
@@ -748,6 +750,7 @@ public class EditPane extends javax.swing.JPanel {
     
     private void updateClassesSelectedClassCB() {
         classesSelectedClassCB.removeAllItems();
+        classesSelectedClassCB.addItem("new class");
         ArrayList<String> classes = UMLUtilities.classNames(sourceTextArea.getText());
         for(String className : classes) {
             classesSelectedClassCB.addItem(className);
