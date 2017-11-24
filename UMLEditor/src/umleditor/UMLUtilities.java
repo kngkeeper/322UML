@@ -315,14 +315,14 @@ public class UMLUtilities {
      */
     public static String renameClass(String source, String className, String newName) {
         String[] lines = source.split("\\n");
-        for(String line : lines) {
-            if(line.contains("class "+className)) {
-                line = line.replaceAll(className, newName);
+        for(int i=0;i<lines.length;i++) {
+            if(lines[i].contains("class "+className)) {
+                lines[i] = lines[i].replaceAll(className, newName);
             }
             else {
                 for(String arrow : ARROWS) {
-                    if(line.contains(arrow) && line.contains(className)) {
-                        line = line.replaceAll(className, newName);
+                    if(lines[i].contains(arrow) && lines[i].contains(className)) {
+                        lines[i] = lines[i].replaceAll(className, newName);
                     }
                 }
             }
@@ -343,13 +343,13 @@ public class UMLUtilities {
      */
     public static String setClassIsAbstract(String source, String className, boolean isAbstract) {
         String[] lines = source.split("\\n");
-        for(String line : lines) {
-            if(line.contains("class "+className)) {
+        for(int i=0;i<lines.length;i++) {
+            if(lines[i].contains("class "+className)) {
                 if(isAbstract) {
-                    line = line.replaceAll("class " + className, "abstract class "+className);
+                    lines[i] = lines[i].replaceAll("class " + className, "abstract class "+className);
                 }
                 else {
-                    line = line.replaceAll("abstract class " + className, "class "+className);
+                    lines[i] = lines[i].replaceAll("abstract class " + className, "class "+className);
                 }
             }
         }
