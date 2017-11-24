@@ -607,8 +607,12 @@ public class EditPane extends javax.swing.JPanel {
         	assType = '-';
         boolean aToB = aToBRB.isSelected();
         String label = associationLabelTF.getText();
-        if (!UMLUtilities.assAtoB(source, classA, classB) && !UMLUtilities.assAtoB(source, classB, classA))
+        if (!UMLUtilities.hasAss(source, classA, classB))
         	sourceTextArea.setText(UMLUtilities.createAss(source, classA, classB, assType, aToB, label));
+        else {
+        	sourceTextArea.setText(UMLUtilities.removeAss(source, classA, classB));
+        	sourceTextArea.setText(UMLUtilities.createAss(sourceTextArea.getText(), classA, classB, assType, aToB, label));
+        }
     }//GEN-LAST:event_associationsApplyBTActionPerformed
 
     private void associationsDeleteBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_associationsDeleteBTActionPerformed

@@ -598,6 +598,27 @@ public class UMLUtilities {
     }
     
     /**
+     * Check if there is an association between two classes
+     * @param source plantUML source string
+     * @param classA first class in association
+     * @param classB second class in association
+     * @return true if there is an association between two classes, otherwise false.
+     */
+    public static boolean hasAss(String source, String classA, String classB) {
+        ArrayList<String> lines = new ArrayList(Arrays.asList(source.split("\\n")));
+        for(int i=0;i<lines.size();i++) {
+            for(String arrow : ARROWS) {
+                if(lines.get(i).contains(arrow)) {
+                    if(lines.get(i).contains(classA) && lines.get(i).contains(classB)) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+    
+    /**
      * Adds a new association to the diagram
      * @param source plantUML source string
      * @param classA first class in association
