@@ -535,9 +535,11 @@ public class EditPane extends javax.swing.JPanel {
     }//GEN-LAST:event_classTypeCBActionPerformed
 
     private void selectedAttributeCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectedAttributeCBActionPerformed
-        String attr = (String) selectedAttributeCB.getSelectedItem();
-        attr.replaceAll(" ", "");
-        attributeNameTF.setText(attr);
+        if(selectedAttributeCB.getSelectedItem() != null) {
+            String attr = (String) selectedAttributeCB.getSelectedItem();
+            attr.replaceAll(" ", "");
+            attributeNameTF.setText(attr);
+        }
     }//GEN-LAST:event_selectedAttributeCBActionPerformed
 
     private void fieldsRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldsRBActionPerformed
