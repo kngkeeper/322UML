@@ -39,8 +39,10 @@ public class UMLContents
      */
     public UMLContents() {
 	super();
-	bufferSize = 100;
-	buffer = new char[bufferSize];
+	//bufferSize = 100;
+	//buffer = new char[bufferSize];
+        bufferSize = "@startuml\n\n@enduml".length();
+        buffer = "@startuml\n\n@enduml".toCharArray();
     } // end constructor
 
     /**

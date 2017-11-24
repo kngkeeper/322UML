@@ -62,6 +62,14 @@ public class UMLDocument
 	contents = new UMLContents();
 	contents.addDocumentListener(this);
         jta = new JLabel();
+        JScrollPane js = new JScrollPane(jta);
+        JPanel jp = new JPanel();
+        jp.add(js);
+        contents.addDocumentListener(new UMLDocumentListener());
+        ep.setFieldDocument(contents);
+        jp.add(ep);
+        window = jp;
+        ep.loaded();
     } // end TextDocument
 
     // Text document change listeners: all invoke the framework's own document
@@ -124,20 +132,20 @@ public class UMLDocument
     {
 	contents.open(in);
         try {
-                String uml = contents.safelyGetText(0, contents.getLength());
-        reader = new SourceStringReader(uml);
-        reader.outputImage(png);
-        diagram = ImageIO.read(png);
-        ImageIcon ico = new ImageIcon(diagram);
-		jta.setIcon(ico);
-		JScrollPane js = new JScrollPane(jta);
-                JPanel jp = new JPanel();
-                jp.add(js);
-                contents.addDocumentListener(new UMLDocumentListener());
-                ep.setFieldDocument(contents);
-                jp.add(ep);
-                window = jp;
-                ep.loaded();
+            String uml = contents.safelyGetText(0, contents.getLength());
+            reader = new SourceStringReader(uml);
+            reader.outputImage(png);
+            diagram = ImageIO.read(png);
+            ImageIcon ico = new ImageIcon(diagram);
+            jta.setIcon(ico);
+            JScrollPane js = new JScrollPane(jta);
+            JPanel jp = new JPanel();
+            jp.add(js);
+            contents.addDocumentListener(new UMLDocumentListener());
+            ep.setFieldDocument(contents);
+            jp.add(ep);
+            window = jp;
+            ep.loaded();
 	} catch (IOException e) {
 		e.printStackTrace();
 	}

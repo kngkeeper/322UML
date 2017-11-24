@@ -63,14 +63,10 @@ public class UMLEditor extends Application {
 	    menu = new MenuDescriptor(Menus.getStandardMenu());
 	    //System.err.println("Got standard menu.");
 	    try {
-			menu.addPath(Menus.getLanguageMenu());
 			//menu.addElement(new MenuElement("Tools")); // position empty menu
 			menu.addElement(new MenuElement("Help/Help", new HelpAction(helpURI), "Help contents"));
 			menu.addElement(new MenuElement("Help/About", new AboutAction(aboutMsg)));
 			menu.addElement(new MenuElement("Help/Credits", new CreditAction()));
-                        menu.addElement(new MenuElement("Edit/Classes", new ClassAction()));
-			menu.addElement(new MenuElement("Edit/Association", new AssociationAction()));
-			menu.addElement(new MenuElement("Edit/Attributes and Methods", new OtherAction()));
 	    } catch (Exception e) {
 		e.printStackTrace();
 	    }
