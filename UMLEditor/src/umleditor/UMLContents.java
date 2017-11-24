@@ -17,6 +17,7 @@ import java.awt.FileDialog;
 import java.awt.Graphics2D;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import net.sourceforge.plantuml.GeneratedImage;
 import net.sourceforge.plantuml.SourceFileReader;
 
@@ -106,13 +107,17 @@ public class UMLContents
      */
     public void save(OutputStream out, BufferedImage png) throws IOException {
 	try {
+            int n = JOptionPane.showConfirmDialog(new JFrame(),"Export PNG?","Save",JOptionPane.YES_NO_OPTION);
 	    write(new PrintWriter(out));
-            FileDialog fd = new FileDialog(new JFrame(), "Save diagram png", FileDialog.LOAD);
-            fd.setFile("*.png");
-            fd.setVisible(true);
-            File[] imageFile = fd.getFiles();
-            if(imageFile[0] != null)
-                ImageIO.write(png, "png", imageFile[0]);
+            if(n == 0) {
+                FileDialog fd = new FileDialog(new JFrame(), "Save diagram png", FileDialog.LOAD);
+                fd.setFile("*.png");
+                fd.setVisible(true);
+                if(fd.getFile() != null) {
+                    File[] imageFile = fd.getFiles();
+                    ImageIO.write(png, "png", imageFile[0]);
+                }
+            }
 	} catch (Exception e) {
 	    out.close();
 	    //	    throw new IOException(e);
