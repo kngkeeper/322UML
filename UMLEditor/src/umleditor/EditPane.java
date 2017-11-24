@@ -80,8 +80,8 @@ public class EditPane extends javax.swing.JPanel {
         sourcePanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         sourceTextArea = new javax.swing.JTextArea();
-        sourceApplyBT = new javax.swing.JButton();
-        sourceResetBT = new javax.swing.JButton();
+        //sourceApplyBT = new javax.swing.JButton();
+        //sourceResetBT = new javax.swing.JButton();
 
         tabbedPanel.setToolTipText("");
         tabbedPanel.setName(""); // NOI18N
@@ -470,7 +470,7 @@ public class EditPane extends javax.swing.JPanel {
         sourceTextArea.setRows(5);
         sourceTextArea.setText("@startuml\n\n@enduml");
         jScrollPane1.setViewportView(sourceTextArea);
-
+        /*
         sourceApplyBT.setText("Apply");
         sourceApplyBT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -484,7 +484,7 @@ public class EditPane extends javax.swing.JPanel {
                 sourceResetBTActionPerformed(evt);
             }
         });
-
+		*/
         javax.swing.GroupLayout sourcePanelLayout = new javax.swing.GroupLayout(sourcePanel);
         sourcePanel.setLayout(sourcePanelLayout);
         sourcePanelLayout.setHorizontalGroup(
@@ -496,10 +496,11 @@ public class EditPane extends javax.swing.JPanel {
                         .addComponent(jScrollPane1))
                     .addGroup(sourcePanelLayout.createSequentialGroup()
                         .addContainerGap(88, Short.MAX_VALUE)
-                        .addComponent(sourceApplyBT)
-                        .addGap(42, 42, 42)
-                        .addComponent(sourceResetBT)
-                        .addGap(0, 88, Short.MAX_VALUE)))
+                        //.addComponent(sourceApplyBT)
+                        //.addGap(42, 42, 42)
+                        //.addComponent(sourceResetBT)
+                        //.addGap(0, 88, Short.MAX_VALUE)
+                        ))
                 .addContainerGap())
         );
         sourcePanelLayout.setVerticalGroup(
@@ -509,8 +510,9 @@ public class EditPane extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(sourcePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(sourceApplyBT)
-                    .addComponent(sourceResetBT))
+                    //.addComponent(sourceApplyBT)
+                    //.addComponent(sourceResetBT)
+                		)
                 .addContainerGap())
         );
 
