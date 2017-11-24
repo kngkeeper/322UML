@@ -303,6 +303,7 @@ public class UMLUtilities {
         for(String line : lines) {
             ret = ret + line + "\n";
         }
+        ret = removeAss(ret, className, "");
         return ret;
     }
     
@@ -382,7 +383,7 @@ public class UMLUtilities {
                     lines.add(i+1,visibility+fieldName);
                 break;
             }
-            else {
+            else if(lines.get(i).contains("class "+className)){
                  String tmp = lines.get(i) + " {";
                  lines.remove(i);
                  lines.add(i, tmp);
