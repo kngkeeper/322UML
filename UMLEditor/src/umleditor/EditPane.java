@@ -591,10 +591,6 @@ public class EditPane extends javax.swing.JPanel {
     	loaded();
     }//GEN-LAST:event_mnfDeleteBTActionPerformed
 
-    private void sourceApplyBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sourceApplyBTActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_sourceApplyBTActionPerformed
-
     private void associationsApplyBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_associationsApplyBTActionPerformed
         String classA = (String)selectedClassACB.getSelectedItem();
         String classB = (String)selectedClassBCB.getSelectedItem();
