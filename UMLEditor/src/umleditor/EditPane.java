@@ -58,12 +58,6 @@ public class EditPane extends javax.swing.JPanel {
         bToARB = new javax.swing.JRadioButton();
         associationLabelLB = new javax.swing.JLabel();
         associationLabelTF = new javax.swing.JTextField();
-        multiplicitiesPanel = new javax.swing.JPanel();
-        multiplicitiesLB = new javax.swing.JLabel();
-        aSideMultiplicitiesLB = new javax.swing.JLabel();
-        aSideMultiplicitiesTF = new javax.swing.JTextField();
-        bSideMultiplicitiesTF = new javax.swing.JTextField();
-        bSideMultiplicitiesLB = new javax.swing.JLabel();
         associationsApplyBT = new javax.swing.JButton();
         associationsDeleteBT = new javax.swing.JButton();
         associationsResetBT = new javax.swing.JButton();
@@ -221,64 +215,7 @@ public class EditPane extends javax.swing.JPanel {
         });
 
         associationLabelLB.setText("Association Label");
-/*
-        multiplicitiesLB.setText("Multiplicities");
 
-        aSideMultiplicitiesLB.setText("A-Side");
-
-        aSideMultiplicitiesTF.setMaximumSize(new java.awt.Dimension(55, 19));
-        aSideMultiplicitiesTF.setMinimumSize(new java.awt.Dimension(55, 19));
-        aSideMultiplicitiesTF.setName(""); // NOI18N
-        aSideMultiplicitiesTF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                aSideMultiplicitiesTFActionPerformed(evt);
-            }
-        });
-
-        bSideMultiplicitiesTF.setMaximumSize(new java.awt.Dimension(55, 19));
-        bSideMultiplicitiesTF.setMinimumSize(new java.awt.Dimension(55, 19));
-
-        bSideMultiplicitiesLB.setText("B-Side");
-
-        javax.swing.GroupLayout multiplicitiesPanelLayout = new javax.swing.GroupLayout(multiplicitiesPanel);
-        multiplicitiesPanel.setLayout(multiplicitiesPanelLayout);
-        multiplicitiesPanelLayout.setHorizontalGroup(
-            multiplicitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, multiplicitiesPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(multiplicitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(aSideMultiplicitiesTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(multiplicitiesPanelLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(aSideMultiplicitiesLB)))
-                .addGap(24, 24, 24)
-                .addGroup(multiplicitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, multiplicitiesPanelLayout.createSequentialGroup()
-                        .addComponent(bSideMultiplicitiesTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, multiplicitiesPanelLayout.createSequentialGroup()
-                        .addComponent(bSideMultiplicitiesLB)
-                        .addGap(23, 23, 23))))
-            .addGroup(multiplicitiesPanelLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(multiplicitiesLB)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        multiplicitiesPanelLayout.setVerticalGroup(
-            multiplicitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(multiplicitiesPanelLayout.createSequentialGroup()
-                .addComponent(multiplicitiesLB)
-                .addGap(21, 21, 21)
-                .addGroup(multiplicitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(aSideMultiplicitiesLB, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(bSideMultiplicitiesLB))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(multiplicitiesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bSideMultiplicitiesTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(aSideMultiplicitiesTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-*/
         associationsApplyBT.setText("Apply");
         associationsApplyBT.setMaximumSize(new java.awt.Dimension(64, 25));
         associationsApplyBT.setMinimumSize(new java.awt.Dimension(64, 25));
@@ -313,9 +250,7 @@ public class EditPane extends javax.swing.JPanel {
                 .addGroup(associationsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(associationsPanelLayout.createSequentialGroup()
                         .addComponent(associationLabelLB)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(multiplicitiesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(57, 57, 57))
+                        .addGap(57, 256, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, associationsPanelLayout.createSequentialGroup()
                         .addGroup(associationsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(associationsPanelLayout.createSequentialGroup()
@@ -355,19 +290,16 @@ public class EditPane extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(associationTypeCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(associationsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(associationsPanelLayout.createSequentialGroup()
-                        .addComponent(associactionDirectionLB)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(aToBRB)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bToARB)
-                        .addGap(18, 18, 18)
-                        .addComponent(associationLabelLB))
-                    .addComponent(multiplicitiesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(associactionDirectionLB)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(aToBRB)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bToARB)
+                .addGap(18, 18, 18)
+                .addComponent(associationLabelLB)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(associationLabelTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addGroup(associationsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(associationsApplyBT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(associationsDeleteBT)
@@ -603,7 +535,9 @@ public class EditPane extends javax.swing.JPanel {
     }//GEN-LAST:event_classTypeCBActionPerformed
 
     private void selectedAttributeCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectedAttributeCBActionPerformed
-        // TODO add your handling code here:
+        String attr = (String) selectedAttributeCB.getSelectedItem();
+        attr.replaceAll(" ", "");
+        attributeNameTF.setText(attr);
     }//GEN-LAST:event_selectedAttributeCBActionPerformed
 
     private void fieldsRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldsRBActionPerformed
@@ -707,10 +641,6 @@ public class EditPane extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_selectedClassACBActionPerformed
 
-    private void aSideMultiplicitiesTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aSideMultiplicitiesTFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_aSideMultiplicitiesTFActionPerformed
-
     private void methodsRBStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_methodsRBStateChanged
         fieldsRB.setSelected(false);
     }//GEN-LAST:event_methodsRBStateChanged
@@ -774,13 +704,14 @@ public class EditPane extends javax.swing.JPanel {
     }//GEN-LAST:event_sourceResetBTActionPerformed
 
     private void mnfSelectedClassCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnfSelectedClassCBActionPerformed
-        /*fieldsRB.setSelected(false);
+        fieldsRB.setSelected(false);
         methodsRB.setSelected(true);
         selectedAttributeCB.removeAllItems();
-        ArrayList<String> classMethods = UMLUtilities.classMethods(getSourceText(), mnfSelectedClassCB.getSelectedItem().toString());
+        selectedAttributeCB.addItem("new method");
+        ArrayList<String> classMethods = UMLUtilities.classMethods(getSourceText(), (String)mnfSelectedClassCB.getSelectedItem());
         for(String className : classMethods) {
             selectedAttributeCB.addItem(className);
-        }*/
+        }
     }//GEN-LAST:event_mnfSelectedClassCBActionPerformed
 
     private String originalText;
@@ -838,6 +769,7 @@ public class EditPane extends javax.swing.JPanel {
         fieldsRB.setSelected(false);
         methodsRB.setSelected(true);
         selectedAttributeCB.removeAllItems();
+        selectedAttributeCB.addItem("new method");
         ArrayList<String> classMethods = UMLUtilities.classMethods(getSourceText(), (String)mnfSelectedClassCB.getSelectedItem());
         for(String className : classMethods) {
             selectedAttributeCB.addItem(className);
@@ -845,8 +777,6 @@ public class EditPane extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel aSideMultiplicitiesLB;
-    private javax.swing.JTextField aSideMultiplicitiesTF;
     private javax.swing.JRadioButton aToBRB;
     private javax.swing.JCheckBox abstractCheckBox;
     private javax.swing.JLabel associactionDirectionLB;
@@ -859,8 +789,6 @@ public class EditPane extends javax.swing.JPanel {
     private javax.swing.JButton associationsResetBT;
     private javax.swing.JLabel attributeNameLB;
     private javax.swing.JTextField attributeNameTF;
-    private javax.swing.JLabel bSideMultiplicitiesLB;
-    private javax.swing.JTextField bSideMultiplicitiesTF;
     private javax.swing.JRadioButton bToARB;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
@@ -886,8 +814,6 @@ public class EditPane extends javax.swing.JPanel {
     private javax.swing.JButton mnfResetBT;
     private javax.swing.JComboBox<String> mnfSelectedClassCB;
     private javax.swing.JLabel mnfSelectedClassLB;
-    private javax.swing.JLabel multiplicitiesLB;
-    private javax.swing.JPanel multiplicitiesPanel;
     private javax.swing.JComboBox<String> selectedAttributeCB;
     private javax.swing.JLabel selectedAttributeLB;
     private javax.swing.JComboBox<String> selectedClassACB;

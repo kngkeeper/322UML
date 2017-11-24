@@ -216,9 +216,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="associationLabelLB" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="multiplicitiesPanel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+                              <EmptySpace min="57" pref="256" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
@@ -267,21 +265,16 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="associationTypeCB" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="associactionDirectionLB" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="aToBRB" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="bToARB" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="associationLabelLB" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="multiplicitiesPanel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="associactionDirectionLB" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="aToBRB" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="bToARB" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="associationLabelLB" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="associationLabelTF" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="38" max="32767" attributes="0"/>
+                      <EmptySpace pref="57" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="associationsApplyBT" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="associationsDeleteBT" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -380,100 +373,6 @@
             </Component>
             <Component class="javax.swing.JTextField" name="associationLabelTF">
             </Component>
-            <Container class="javax.swing.JPanel" name="multiplicitiesPanel">
-
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="aSideMultiplicitiesTF" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                  <Component id="aSideMultiplicitiesLB" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="bSideMultiplicitiesTF" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="bSideMultiplicitiesLB" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                          <Component id="multiplicitiesLB" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="multiplicitiesLB" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="aSideMultiplicitiesLB" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="bSideMultiplicitiesLB" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="bSideMultiplicitiesTF" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="aSideMultiplicitiesTF" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-              </Layout>
-              <SubComponents>
-                <Component class="javax.swing.JLabel" name="multiplicitiesLB">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Multiplicities"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="aSideMultiplicitiesLB">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="A-Side"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="aSideMultiplicitiesTF">
-                  <Properties>
-                    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[55, 19]"/>
-                    </Property>
-                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[55, 19]"/>
-                    </Property>
-                    <Property name="name" type="java.lang.String" value="" noResource="true"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="aSideMultiplicitiesTFActionPerformed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JTextField" name="bSideMultiplicitiesTF">
-                  <Properties>
-                    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[55, 19]"/>
-                    </Property>
-                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[55, 19]"/>
-                    </Property>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="bSideMultiplicitiesLB">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="B-Side"/>
-                  </Properties>
-                </Component>
-              </SubComponents>
-            </Container>
             <Component class="javax.swing.JButton" name="associationsApplyBT">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Apply"/>
