@@ -51,6 +51,7 @@ public class UMLDocument
     SourceStringReader reader;
     EditPane ep = new EditPane();
     File png = new File("out.png");
+    BufferedImage diagram;
 
     /**
      * Constructs a document representation.
@@ -95,7 +96,7 @@ public class UMLDocument
      * closed the stream; isChanged() is unchanged.
      */
     public void save(OutputStream out) throws IOException {
-	contents.save(out);
+	contents.save(out, diagram);
 	setChanged(false);
     } // save
 
@@ -126,8 +127,8 @@ public class UMLDocument
                 String uml = contents.safelyGetText(0, contents.getLength());
         reader = new SourceStringReader(uml);
         reader.outputImage(png);
-        BufferedImage out = ImageIO.read(png);
-        ImageIcon ico = new ImageIcon(out);
+        diagram = ImageIO.read(png);
+        ImageIcon ico = new ImageIcon(diagram);
 		jta.setIcon(ico);
 		JScrollPane js = new JScrollPane(jta);
                 JPanel jp = new JPanel();

@@ -13,6 +13,10 @@ import javax.imageio.ImageIO;
 import ca.queensu.cs.dal.edfmwk.doc.DocumentException;
 import ca.queensu.cs.dal.edfmwk.doc.StringSequence;
 import ca.queensu.cs.dal.edfmwk.doc.StringSequenceInputStream;
+import java.awt.FileDialog;
+import java.awt.Graphics2D;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import net.sourceforge.plantuml.GeneratedImage;
 import net.sourceforge.plantuml.SourceFileReader;
 
@@ -100,9 +104,15 @@ public class UMLContents
      * @throws IOException if any I/O errors occur, in which case it will have
      * closed the stream.
      */
-    public void save(OutputStream out) throws IOException {
+    public void save(OutputStream out, BufferedImage png) throws IOException {
 	try {
 	    write(new PrintWriter(out));
+            FileDialog fd = new FileDialog(new JFrame(), "Save diagram png", FileDialog.LOAD);
+            fd.setFile("*.png");
+            fd.setVisible(true);
+            File[] imageFile = fd.getFiles();
+            if(imageFile[0] != null)
+                ImageIO.write(png, "png", imageFile[0]);
 	} catch (Exception e) {
 	    out.close();
 	    //	    throw new IOException(e);
