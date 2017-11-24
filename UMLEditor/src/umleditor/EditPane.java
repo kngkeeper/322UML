@@ -436,19 +436,19 @@ public class EditPane extends javax.swing.JPanel {
                 .addComponent(mnfSelectedClassLB)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(mnfSelectedClassCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(9, 9, 9)
                 .addComponent(methodsRB)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(fieldsRB)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(selectedAttributeLB)
-                .addGap(3, 3, 3)
+                .addGap(1, 1, 1)
                 .addComponent(selectedAttributeCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(9, 9, 9)
                 .addComponent(attributeNameLB)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(attributeNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(9, 9, 9)
                 .addComponent(visibilityLB)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(visibilityCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -566,7 +566,8 @@ public class EditPane extends javax.swing.JPanel {
     		if (selectedmnf.equals("new method"))
     			sourceTextArea.setText(UMLUtilities.createMethod(sourceTextArea.getText(), className, mnfName, visibility, isStatic, isAbstract));
     		else {
-    			// modifying an existing method here
+    			sourceTextArea.setText(UMLUtilities.deleteMethod(sourceTextArea.getText(), className, selectedmnf));
+    			sourceTextArea.setText(UMLUtilities.createMethod(sourceTextArea.getText(), className, mnfName, visibility, isStatic, isAbstract));
     		}
     			
         }
@@ -574,7 +575,8 @@ public class EditPane extends javax.swing.JPanel {
         	if (selectedmnf.equals("new field"))
         		sourceTextArea.setText(UMLUtilities.createField(sourceTextArea.getText(), className, mnfName, visibility, isStatic, isAbstract));
         	else {
-        		// modifying an existing field here 
+    			sourceTextArea.setText(UMLUtilities.deleteField(sourceTextArea.getText(), className, selectedmnf));
+    			sourceTextArea.setText(UMLUtilities.createField(sourceTextArea.getText(), className, mnfName, visibility, isStatic, isAbstract));
         	}
         }
     }//GEN-LAST:event_mnfApplyBTActionPerformed
