@@ -221,7 +221,7 @@ public class EditPane extends javax.swing.JPanel {
         });
 
         associationLabelLB.setText("Association Label");
-
+/*
         multiplicitiesLB.setText("Multiplicities");
 
         aSideMultiplicitiesLB.setText("A-Side");
@@ -278,7 +278,7 @@ public class EditPane extends javax.swing.JPanel {
                     .addComponent(aSideMultiplicitiesTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
+*/
         associationsApplyBT.setText("Apply");
         associationsApplyBT.setMaximumSize(new java.awt.Dimension(64, 25));
         associationsApplyBT.setMinimumSize(new java.awt.Dimension(64, 25));
@@ -611,7 +611,36 @@ public class EditPane extends javax.swing.JPanel {
     }//GEN-LAST:event_fieldsRBActionPerformed
 
     private void mnfApplyBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnfApplyBTActionPerformed
-        //-----------------------------------------------
+        String className = (String)mnfSelectedClassCB.getSelectedItem();
+        String selectedmnf = (String)selectedAttributeCB.getSelectedItem();
+        String mnfName = attributeNameTF.getText();
+        char visibility;
+        String vis = (String)visibilityCB.getSelectedItem();
+        if (vis.equals("private"))
+        	visibility = '-';
+        else if (vis.equals("protected"))
+        	visibility = '#';
+        else if (vis.equals("package private"))
+        	visibility = '~';
+        else
+        	visibility = '+';
+        boolean isStatic = staticCheckBox.isSelected();
+        boolean isAbstract = abstractCheckBox.isSelected();
+    	if (methodsRB.isSelected()) {
+    		if (selectedmnf.equals("new method"))
+    			sourceTextArea.setText(UMLUtilities.createMethod(sourceTextArea.getText(), className, mnfName, visibility, isStatic, isAbstract));
+    		else {
+    			// modifying an existing method here
+    		}
+    			
+        }
+        else {
+        	if (selectedmnf.equals("new field"))
+        		sourceTextArea.setText(UMLUtilities.createField(sourceTextArea.getText(), className, mnfName, visibility, isStatic, isAbstract));
+        	else {
+        		// modifying an existing field here 
+        	}
+        }
     }//GEN-LAST:event_mnfApplyBTActionPerformed
 
     private void mnfDeleteBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnfDeleteBTActionPerformed
@@ -745,13 +774,13 @@ public class EditPane extends javax.swing.JPanel {
     }//GEN-LAST:event_sourceResetBTActionPerformed
 
     private void mnfSelectedClassCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnfSelectedClassCBActionPerformed
-        fieldsRB.setSelected(false);
+        /*fieldsRB.setSelected(false);
         methodsRB.setSelected(true);
         selectedAttributeCB.removeAllItems();
         ArrayList<String> classMethods = UMLUtilities.classMethods(getSourceText(), mnfSelectedClassCB.getSelectedItem().toString());
         for(String className : classMethods) {
             selectedAttributeCB.addItem(className);
-        }
+        }*/
     }//GEN-LAST:event_mnfSelectedClassCBActionPerformed
 
     private String originalText;
@@ -809,7 +838,7 @@ public class EditPane extends javax.swing.JPanel {
         fieldsRB.setSelected(false);
         methodsRB.setSelected(true);
         selectedAttributeCB.removeAllItems();
-        ArrayList<String> classMethods = UMLUtilities.classMethods(getSourceText(), mnfSelectedClassCB.getSelectedItem().toString());
+        ArrayList<String> classMethods = UMLUtilities.classMethods(getSourceText(), (String)mnfSelectedClassCB.getSelectedItem());
         for(String className : classMethods) {
             selectedAttributeCB.addItem(className);
         }
