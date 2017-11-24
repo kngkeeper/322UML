@@ -270,9 +270,12 @@ public class UMLUtilities {
      * @param className name of new class to add
      * @return plantUML source string with new class added
      */
-    public static String createClass(String source, String className) {
+    public static String createClass(String source, String className, String classtype) {
         ArrayList<String> lines = new ArrayList(Arrays.asList(source.split("\\n")));
-        lines.add(1, "class "+className);
+        if (classtype.equals("Abstract"))
+        	lines.add(1, "abstract class "+className);
+        else
+        	lines.add(1, "class "+className);
         String ret = "";
         for(String line : lines) {
             ret = ret + line + "\n";

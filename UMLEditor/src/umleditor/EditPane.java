@@ -683,13 +683,11 @@ public class EditPane extends javax.swing.JPanel {
     private void classesApplyBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classesApplyBTActionPerformed
         String className = classNameTF.getText();
         className = className.replaceAll(" ", "");
+        boolean isAbstract = ((String)classTypeCB.getSelectedItem()).equals("Abstract");
         if (classesSelectedClassCB.getSelectedItem().equals("new class"))
-        	sourceTextArea.setText(UMLUtilities.createClass(sourceTextArea.getText(), className));
+        	sourceTextArea.setText(UMLUtilities.createClass(sourceTextArea.getText(), className, (String)classTypeCB.getSelectedItem()));
         else {
         	sourceTextArea.setText(UMLUtilities.renameClass(sourceTextArea.getText(), (String)classesSelectedClassCB.getSelectedItem(), className));
-        	boolean isAbstract = true;
-        	if (classTypeCB.getSelectedItem().equals("Concrete"))
-        		isAbstract = false;
         	sourceTextArea.setText(UMLUtilities.setClassIsAbstract(sourceTextArea.getText(), className, isAbstract));
         }
     }//GEN-LAST:event_classesApplyBTActionPerformed
